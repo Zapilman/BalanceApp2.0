@@ -65,7 +65,15 @@ namespace BalanceApp.BL.Controller
             
         }
 
-     
+        public UserController(string userName)
+        {
+            var newUser = new User(userName, null, DateTime.Parse("02.01.1900"), "sss", "12ddd34");
+            //Users.Add(newUser);
+            CurrentUser = newUser;
+            Users.Add(CurrentUser);
+        }
+        
+
 
         /// <summary>
         /// Saving user's data.
@@ -87,7 +95,7 @@ namespace BalanceApp.BL.Controller
             var formatter = new BinaryFormatter();
             using (var file = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
-                if (formatter.Deserialize(file) is List<User> user)
+                if (file.Length>0 && formatter.Deserialize(file) is List<User> user)
                 {
                     return user;
                 }

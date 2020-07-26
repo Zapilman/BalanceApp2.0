@@ -53,10 +53,10 @@ namespace BalanceApp.BL.Model
                 throw new ArgumentException("Name can not be a null or white space", nameof(name));
             }
 
-            if (balance is null)
-            {
-                throw new ArgumentNullException("Balance can not be a null", nameof(balance));
-            }
+            //if (balance is null)
+            //{
+            //    throw new ArgumentNullException("Balance can not be a null", nameof(balance)); Потом убрать
+            //}
 
             if (birthday < DateTime.Parse("01.01.1900") || birthday > DateTime.Now)
             {

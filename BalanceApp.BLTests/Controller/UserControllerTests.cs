@@ -18,7 +18,14 @@ namespace BalanceApp.BL.Controller.Tests
         [TestMethod()]
         public void SaveTest()
         {
-            Assert.Fail();
+            //Arrange
+            var userName = Guid.NewGuid().ToString();
+
+            //Act
+            var controller = new UserController(userName);
+
+            //Accert
+            Assert.AreEqual(userName, controller.CurrentUser.Name);
         }
     }
 }

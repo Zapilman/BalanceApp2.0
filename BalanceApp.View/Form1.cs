@@ -48,7 +48,8 @@ namespace BalanceApp.View
         
         private void button1_Click(object sender, EventArgs e)
         {
-            var userController = new UserController(LoginBox.Text, PasswordBox.Text);
+            //var userController = new UserController(LoginBox.Text, PasswordBox.Text);
+            var userController = new UserController(LoginBox.Text);
             Reason(userController.WhatIsWrong);
         }
 
