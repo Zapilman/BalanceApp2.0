@@ -1,8 +1,11 @@
-﻿namespace BalanceApp.BL.Model
+﻿using System;
+
+namespace BalanceApp.BL.Model
 {
     /// <summary>
     /// Balance.
     /// </summary>
+    [Serializable]
     public class Balance
     {
         /// <summary>
@@ -23,7 +26,7 @@
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new System.ArgumentException("Name can not be a null or white space", nameof(name));
+                throw new ArgumentException("Name can not be a null or white space", nameof(name));
             }
 
             Name = name;

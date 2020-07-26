@@ -7,6 +7,7 @@ namespace BalanceApp.BL.Model
     /// <summary>
     /// User.
     /// </summary>
+    [Serializable]
     public class User
     {
         #region Properties
@@ -54,10 +55,10 @@ namespace BalanceApp.BL.Model
 
             if (balance is null)
             {
-                throw new ArgumentNullException("Balance can not be a null",nameof(balance));
+                throw new ArgumentNullException("Balance can not be a null", nameof(balance));
             }
 
-            if(birthday < DateTime.Parse("01.01.1900") || birthday > DateTime.Now)
+            if (birthday < DateTime.Parse("01.01.1900") || birthday > DateTime.Now)
             {
                 throw new ArgumentException("invalid day of birth", nameof(birthday));
             }

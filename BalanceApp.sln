@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceApp.BL", "BalanceApp.BL\BalanceApp.BL.csproj", "{FE8B183E-7505-4BE7-8002-A70B41D3B5C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BalanceApp.BL", "BalanceApp.BL\BalanceApp.BL.csproj", "{FE8B183E-7505-4BE7-8002-A70B41D3B5C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceApp.View", "BalanceApp.View\BalanceApp.View.csproj", "{3869E394-0AB0-4972-8ADF-18CE7F1452CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceApp.BLTests", "BalanceApp.BLTests\BalanceApp.BLTests.csproj", "{8C9D1AA4-F670-446D-96BE-16B4F85E6731}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3869E394-0AB0-4972-8ADF-18CE7F1452CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3869E394-0AB0-4972-8ADF-18CE7F1452CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3869E394-0AB0-4972-8ADF-18CE7F1452CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C9D1AA4-F670-446D-96BE-16B4F85E6731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9D1AA4-F670-446D-96BE-16B4F85E6731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9D1AA4-F670-446D-96BE-16B4F85E6731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9D1AA4-F670-446D-96BE-16B4F85E6731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
