@@ -59,7 +59,7 @@ namespace BalanceApp.BL.Controller
                 }
                 else
                 {
-                    WhatIsWrong = "Nothing";
+                    WhatIsWrong = "Nothing"; 
                 }
             }
             
@@ -78,7 +78,6 @@ namespace BalanceApp.BL.Controller
         }
         
         public UserController(string userName,
-                              Balance balance,
                               DateTime dateTime,
                               string password,
                               string login)
@@ -91,7 +90,7 @@ namespace BalanceApp.BL.Controller
             }
             else
             {
-                CurrentUser = new User(userName, balance, dateTime, password, login);
+                CurrentUser = new User(userName, dateTime, password, login);
                 Users.Add(CurrentUser);
                 Save();
             }

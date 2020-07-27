@@ -20,11 +20,13 @@ namespace BalanceApp.BL.Model
         /// </summary>
         public DateTime Birthday { get; }
         /// <summary>
-        /// Balance.
+        /// List of expenses.
         /// </summary>
-        public Balance Balance { get; }
-
-        
+        public List<Balance> Expenses { get; }
+        /// <summary>
+        /// List of incomes.
+        /// </summary>
+        public List<Balance> Incomes { get; set; }
         /// <summary>
         /// Password.
         /// </summary>
@@ -44,7 +46,6 @@ namespace BalanceApp.BL.Model
         /// <param name="login"> Login of user. </param>
         #endregion
         public User(string name,
-                    Balance balance,
                     DateTime birthday,
                     string password,
                     string login)
@@ -54,12 +55,7 @@ namespace BalanceApp.BL.Model
             {
                 throw new ArgumentException("Name can not be a null or white space", nameof(name));
             }
-
-            if (balance is null)
-            {
-                throw new ArgumentNullException("Balance can not be a null", nameof(balance)); 
-            }
-
+           
             if (birthday < DateTime.Parse("01.01.1900") || birthday > DateTime.Now)
             {
                 throw new ArgumentException("invalid day of birth", nameof(birthday));
@@ -77,10 +73,11 @@ namespace BalanceApp.BL.Model
             #endregion
 
             Name = name;
-            Balance = balance;
             Birthday = birthday;
             Password = password;
             Login = login;
+            Expenses = new List<Balance>();
+            Incomes = new List<Balance>();
         }
         /// <summary>
         /// to Create new User with one name.

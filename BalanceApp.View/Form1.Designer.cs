@@ -31,7 +31,7 @@
             this.LoginBox = new System.Windows.Forms.TextBox();
             this.PasswordBox = new System.Windows.Forms.TextBox();
             this.warning_alarm = new System.Windows.Forms.Label();
-            this.Enter = new System.Windows.Forms.Button();
+            this.Accept = new System.Windows.Forms.Button();
             this.goToRegistration = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -60,15 +60,15 @@
             this.warning_alarm.TabIndex = 2;
             this.warning_alarm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Enter
+            // Accept
             // 
-            this.Enter.Location = new System.Drawing.Point(381, 274);
-            this.Enter.Name = "Enter";
-            this.Enter.Size = new System.Drawing.Size(75, 23);
-            this.Enter.TabIndex = 3;
-            this.Enter.Text = "button1";
-            this.Enter.UseVisualStyleBackColor = true;
-            this.Enter.Click += new System.EventHandler(this.button1_Click);
+            this.Accept.Location = new System.Drawing.Point(381, 274);
+            this.Accept.Name = "Accept";
+            this.Accept.Size = new System.Drawing.Size(75, 23);
+            this.Accept.TabIndex = 3;
+            this.Accept.Text = "button1";
+            this.Accept.UseVisualStyleBackColor = true;
+            this.Accept.Click += new System.EventHandler(this.Button1_Click);
             // 
             // goToRegistration
             // 
@@ -79,7 +79,7 @@
             this.goToRegistration.Text = "Don\'t have an account yet ?";
             this.goToRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.goToRegistration.Visible = false;
-            this.goToRegistration.Click += new System.EventHandler(this.goToRegistration_Click);
+            this.goToRegistration.Click += new System.EventHandler(this.GoToRegistration_Click);
             // 
             // Form1
             // 
@@ -87,14 +87,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.goToRegistration);
-            this.Controls.Add(this.Enter);
+            this.Controls.Add(this.Accept);
             this.Controls.Add(this.warning_alarm);
             this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.LoginBox);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,7 +104,7 @@
         private System.Windows.Forms.TextBox LoginBox;
         private System.Windows.Forms.TextBox PasswordBox;
         private System.Windows.Forms.Label warning_alarm;
-        private System.Windows.Forms.Button Enter;
+        private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Label goToRegistration;
     }
 }

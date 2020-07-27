@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BalanceApp.BL.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,19 @@ namespace BalanceApp.View
         public Registration()
         {
             InitializeComponent();
+        }
+
+        private void ButtonReg_Click(object sender, EventArgs e)
+        {
+            var userController = new UserController(NameBox.Text,
+                                                dateTimePicker.Value,
+                                                PassBox.Text,
+                                                LogBox.Text);
+            this.Close();
+            using (Form1 form = new Form1())
+            {
+                form.ShowDialog();
+            }
         }
     }
 }

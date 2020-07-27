@@ -18,13 +18,7 @@ namespace BalanceApp.View
             InitializeComponent();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-            var userController = new UserController(PasswordBox.Text,LoginBox.Text);
-            Reason(userController.WhatIsWrong);
-            
-        }
+       
         /// <summary>
         /// Reason of incorrect data.
         /// </summary>
@@ -40,23 +34,29 @@ namespace BalanceApp.View
             }
             else
             {
-                App application = new App();
-                application.ShowDialog();
+                using(App application = new App())
+                {
+                    application.ShowDialog();
+                }
+                
             }
             
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            //var userController = new UserController(LoginBox.Text, PasswordBox.Text);
-            var userController = new UserController(LoginBox.Text);
+            var userController = new UserController(PasswordBox.Text,LoginBox.Text);
             Reason(userController.WhatIsWrong);
         }
 
-        private void goToRegistration_Click(object sender, EventArgs e)
+        private void GoToRegistration_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
-            registration.ShowDialog();
+            using (Registration registration = new Registration())
+            {
+
+
+                registration.ShowDialog();
+            }
         }
     }
 }
