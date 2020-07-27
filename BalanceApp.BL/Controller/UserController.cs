@@ -64,16 +64,38 @@ namespace BalanceApp.BL.Controller
             }
             
         }
-
+        /// <summary>
+        /// To create a new user.
+        /// </summary>
+        /// <param name="userName"></param>
         public UserController(string userName)
         {
-            var newUser = new User(userName, null, DateTime.Parse("02.01.1900"), "sss", "12ddd34");
-            //Users.Add(newUser);
+            var newUser = new User(userName);
             CurrentUser = newUser;
+            Users = GetUsersData();
             Users.Add(CurrentUser);
+            Save();
         }
         
-
+        public UserController(string userName,
+                              Balance balance,
+                              DateTime dateTime,
+                              string password,
+                              string login)
+        {
+            Users = GetUsersData();
+            CurrentUser = Users.SingleOrDefault(u => u.Login == login);
+            if (CurrentUser != null)
+            {
+                WhatIsWrong = "This login is already teken";
+            }
+            else
+            {
+                CurrentUser = new User(userName, balance, dateTime, password, login);
+                Users.Add(CurrentUser);
+                Save();
+            }
+        }
 
         /// <summary>
         /// Saving user's data.

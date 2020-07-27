@@ -23,6 +23,8 @@ namespace BalanceApp.BL.Model
         /// Balance.
         /// </summary>
         public Balance Balance { get; }
+
+        
         /// <summary>
         /// Password.
         /// </summary>
@@ -53,10 +55,10 @@ namespace BalanceApp.BL.Model
                 throw new ArgumentException("Name can not be a null or white space", nameof(name));
             }
 
-            //if (balance is null)
-            //{
-            //    throw new ArgumentNullException("Balance can not be a null", nameof(balance)); Потом убрать
-            //}
+            if (balance is null)
+            {
+                throw new ArgumentNullException("Balance can not be a null", nameof(balance)); 
+            }
 
             if (birthday < DateTime.Parse("01.01.1900") || birthday > DateTime.Now)
             {
@@ -79,6 +81,19 @@ namespace BalanceApp.BL.Model
             Birthday = birthday;
             Password = password;
             Login = login;
+        }
+        /// <summary>
+        /// to Create new User with one name.
+        /// </summary>
+        /// <param name="name"> username. </param>
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("message", nameof(name));
+            }
+
+            Name = name;
         }
 
         public override string ToString()
