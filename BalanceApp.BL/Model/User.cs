@@ -22,7 +22,7 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// List of expenses.
         /// </summary>
-        public List<Balance> Expenses { get; }
+        public List<Balance> Expenses { get; set; }
         /// <summary>
         /// List of incomes.
         /// </summary>

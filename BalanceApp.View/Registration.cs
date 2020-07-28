@@ -24,11 +24,8 @@ namespace BalanceApp.View
                                                 dateTimePicker.Value,
                                                 PassBox.Text,
                                                 LogBox.Text);
+
             this.Close();
-            using (Form1 form = new Form1())
-            {
-                form.ShowDialog();
-            }
         }
     }
 }

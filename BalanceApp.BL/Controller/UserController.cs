@@ -76,6 +76,8 @@ namespace BalanceApp.BL.Controller
             Users.Add(CurrentUser);
             Save();
         }
+
+        
         
         public UserController(string userName,
                               DateTime dateTime,

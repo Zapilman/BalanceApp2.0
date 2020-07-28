@@ -23,7 +23,7 @@ namespace BalanceApp.View
         /// Reason of incorrect data.
         /// </summary>
         /// <param name="reason"> Name of reason. </param>
-        private void Reason(string reason)
+        private void Reason(string reason, UserController userController)
         {
             
 
@@ -34,11 +34,11 @@ namespace BalanceApp.View
             }
             else
             {
-                using(App application = new App())
-                {
-                    application.ShowDialog();
-                }
-                
+
+                App application = new App(userController.CurrentUser);
+                this.Hide();
+                application.ShowDialog();
+                this.Close();
             }
             
         }
@@ -46,16 +46,20 @@ namespace BalanceApp.View
         private void Button1_Click(object sender, EventArgs e)
         {
             var userController = new UserController(PasswordBox.Text,LoginBox.Text);
-            Reason(userController.WhatIsWrong);
+            Reason(userController.WhatIsWrong,userController);
+
         }
 
         private void GoToRegistration_Click(object sender, EventArgs e)
         {
             using (Registration registration = new Registration())
             {
-
+                this.Hide();
 
                 registration.ShowDialog();
+                PasswordBox.Text = "";
+                LoginBox.Text = "";
+                this.Show();
             }
         }
     }

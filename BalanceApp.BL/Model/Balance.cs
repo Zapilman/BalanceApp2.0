@@ -35,7 +35,7 @@ namespace BalanceApp.BL.Model
 
         public override string ToString()
         {
-            return $"{Name}:\t{Cost}";
+            return $"{Cost}";
         }
 
 
