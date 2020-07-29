@@ -33,6 +33,7 @@
             this.warning_alarm = new System.Windows.Forms.Label();
             this.Accept = new System.Windows.Forms.Button();
             this.goToRegistration = new System.Windows.Forms.Label();
+            this.GreetingsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LoginBox
@@ -81,11 +82,21 @@
             this.goToRegistration.Visible = false;
             this.goToRegistration.Click += new System.EventHandler(this.GoToRegistration_Click);
             // 
+            // GreetingsLabel
+            // 
+            this.GreetingsLabel.AutoSize = true;
+            this.GreetingsLabel.Location = new System.Drawing.Point(381, 53);
+            this.GreetingsLabel.Name = "GreetingsLabel";
+            this.GreetingsLabel.Size = new System.Drawing.Size(46, 17);
+            this.GreetingsLabel.TabIndex = 5;
+            this.GreetingsLabel.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GreetingsLabel);
             this.Controls.Add(this.goToRegistration);
             this.Controls.Add(this.Accept);
             this.Controls.Add(this.warning_alarm);
@@ -94,6 +105,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,6 +118,7 @@
         private System.Windows.Forms.Label warning_alarm;
         private System.Windows.Forms.Button Accept;
         private System.Windows.Forms.Label goToRegistration;
+        private System.Windows.Forms.Label GreetingsLabel;
     }
 }
 

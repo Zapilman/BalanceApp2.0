@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.IncomesView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ExpensesView = new System.Windows.Forms.ListView();
             this.Stuff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ExpAddButton = new System.Windows.Forms.Button();
             this.IncAddButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ShowIncomes = new System.Windows.Forms.Label();
+            this.ShowExpenses = new System.Windows.Forms.Label();
+            this.ShowResult = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // IncomesView
@@ -46,12 +49,22 @@
             this.columnHeader2});
             this.IncomesView.GridLines = true;
             this.IncomesView.HideSelection = false;
-            this.IncomesView.Location = new System.Drawing.Point(65, 86);
+            this.IncomesView.Location = new System.Drawing.Point(50, 86);
             this.IncomesView.Name = "IncomesView";
-            this.IncomesView.Size = new System.Drawing.Size(427, 376);
+            this.IncomesView.Size = new System.Drawing.Size(502, 427);
             this.IncomesView.TabIndex = 2;
             this.IncomesView.UseCompatibleStateImageBehavior = false;
             this.IncomesView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Stuff";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Count";
+            this.columnHeader2.Width = 100;
             // 
             // ExpensesView
             // 
@@ -60,9 +73,9 @@
             this.Cost});
             this.ExpensesView.GridLines = true;
             this.ExpensesView.HideSelection = false;
-            this.ExpensesView.Location = new System.Drawing.Point(514, 86);
+            this.ExpensesView.Location = new System.Drawing.Point(621, 86);
             this.ExpensesView.Name = "ExpensesView";
-            this.ExpensesView.Size = new System.Drawing.Size(427, 376);
+            this.ExpensesView.Size = new System.Drawing.Size(468, 427);
             this.ExpensesView.TabIndex = 3;
             this.ExpensesView.UseCompatibleStateImageBehavior = false;
             this.ExpensesView.View = System.Windows.Forms.View.Details;
@@ -77,7 +90,7 @@
             // 
             // ExpAddButton
             // 
-            this.ExpAddButton.Location = new System.Drawing.Point(514, 57);
+            this.ExpAddButton.Location = new System.Drawing.Point(621, 50);
             this.ExpAddButton.Name = "ExpAddButton";
             this.ExpAddButton.Size = new System.Drawing.Size(75, 23);
             this.ExpAddButton.TabIndex = 4;
@@ -87,7 +100,7 @@
             // 
             // IncAddButton
             // 
-            this.IncAddButton.Location = new System.Drawing.Point(65, 57);
+            this.IncAddButton.Location = new System.Drawing.Point(50, 57);
             this.IncAddButton.Name = "IncAddButton";
             this.IncAddButton.Size = new System.Drawing.Size(75, 23);
             this.IncAddButton.TabIndex = 5;
@@ -104,21 +117,41 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // columnHeader1
+            // ShowIncomes
             // 
-            this.columnHeader1.Text = "Stuff";
-            this.columnHeader1.Width = 100;
+            this.ShowIncomes.AutoSize = true;
+            this.ShowIncomes.Location = new System.Drawing.Point(125, 542);
+            this.ShowIncomes.Name = "ShowIncomes";
+            this.ShowIncomes.Size = new System.Drawing.Size(46, 17);
+            this.ShowIncomes.TabIndex = 7;
+            this.ShowIncomes.Text = "label1";
             // 
-            // columnHeader2
+            // ShowExpenses
             // 
-            this.columnHeader2.Text = "Count";
-            this.columnHeader2.Width = 100;
+            this.ShowExpenses.AutoSize = true;
+            this.ShowExpenses.Location = new System.Drawing.Point(661, 542);
+            this.ShowExpenses.Name = "ShowExpenses";
+            this.ShowExpenses.Size = new System.Drawing.Size(46, 17);
+            this.ShowExpenses.TabIndex = 8;
+            this.ShowExpenses.Text = "label2";
+            // 
+            // ShowResult
+            // 
+            this.ShowResult.AutoSize = true;
+            this.ShowResult.Location = new System.Drawing.Point(525, 641);
+            this.ShowResult.Name = "ShowResult";
+            this.ShowResult.Size = new System.Drawing.Size(46, 17);
+            this.ShowResult.TabIndex = 9;
+            this.ShowResult.Text = "label3";
             // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 552);
+            this.ClientSize = new System.Drawing.Size(1159, 703);
+            this.Controls.Add(this.ShowResult);
+            this.Controls.Add(this.ShowExpenses);
+            this.Controls.Add(this.ShowIncomes);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.IncAddButton);
             this.Controls.Add(this.ExpAddButton);
@@ -128,6 +161,7 @@
             this.Text = "App";
             this.Load += new System.EventHandler(this.App_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -142,5 +176,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.Label ShowIncomes;
+        private System.Windows.Forms.Label ShowExpenses;
+        private System.Windows.Forms.Label ShowResult;
     }
 }

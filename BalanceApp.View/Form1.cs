@@ -72,5 +72,10 @@ namespace BalanceApp.View
                 this.Show();
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            GreetingsLabel.Text = Languages.Messages.Greetings;
+        }
     }
 }

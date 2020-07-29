@@ -32,6 +32,10 @@ namespace BalanceApp.View
         {
             RestartData(GetBalanceList(currentUser.Expenses), ExpensesView);
             RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
+            ShowCountOfIncomes(currentUser.Incomes);
+            ShowCountOfExpenses(currentUser.Expenses);
+            ShowCountResult(currentUser.Incomes,currentUser.Expenses);
+            // TODO: аргументы и методы повторяються.
         }
         /// <summary>
         /// Getting list of incomes or expenses.
@@ -81,7 +85,7 @@ namespace BalanceApp.View
                 var lvi = new ListViewItem(row);
                 lvi.Tag = item;
                 listView.Items.Add(lvi);
-                
+                // TODO: Подумать как без перезалива данный обновлять таблицы(найти способ добавлять и удалять балансы)
             }
         }
         /// <summary>
@@ -95,5 +99,41 @@ namespace BalanceApp.View
             currentUser.Incomes.Insert(0, stuff);
             RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
         }
+
+        private void ShowCountOfIncomes(List<Balance> incomes)
+        {
+            var sumOfIncomes = 0;
+            foreach(var income in incomes)
+            {
+                sumOfIncomes += income.Cost;
+            }
+            ShowIncomes.Text = $"Incomes: {sumOfIncomes}";
+        }
+
+        private void ShowCountOfExpenses(List<Balance> expenses)
+        {
+            var sumOfExpenses = 0;
+            foreach (var expense in expenses)
+            {
+                sumOfExpenses += expense.Cost;
+            }
+            ShowExpenses.Text = $"Expenses: {sumOfExpenses}";
+        }
+
+        private void ShowCountResult(List<Balance> incomes, List<Balance> expenses)
+        {
+            var resultSum = 0;
+            //сделать менее громоздким(создать поля или запилить все три метода на отображение в один)
+            foreach (var income in incomes)
+            {
+                resultSum += income.Cost;
+            }
+            foreach (var expense in expenses)
+            {
+                resultSum += expense.Cost;
+            }
+            ShowResult.Text = $"Expenses: {resultSum}";
+        }
+
     }
 }
