@@ -9,12 +9,7 @@ namespace BalanceApp.BL.Controller.Tests
     [TestClass()]
     public class UserControllerTests
     {
-        [TestMethod()]
-        public void UserControllerTest()
-        {
-            Assert.Fail();
-        }
-
+        
         [TestMethod()]
         public void SaveTest()
         {

@@ -17,7 +17,11 @@ namespace BalanceApp.View
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Create a new user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonReg_Click(object sender, EventArgs e)
         {
             var userController = new UserController(NameBox.Text,

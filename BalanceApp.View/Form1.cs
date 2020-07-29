@@ -42,14 +42,24 @@ namespace BalanceApp.View
             }
             
         }
-        
+        /// <summary>
+        /// Intializing of user, saving new data of user after closing an app.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button1_Click(object sender, EventArgs e)
         {
             var userController = new UserController(PasswordBox.Text,LoginBox.Text);
             Reason(userController.WhatIsWrong,userController);
+            userController.Save();  //Saving again after closing an app to recorder new userdata,
+                                    //which has been created in this app.
 
         }
-
+        /// <summary>
+        /// Move to registration form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToRegistration_Click(object sender, EventArgs e)
         {
             using (Registration registration = new Registration())

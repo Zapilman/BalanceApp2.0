@@ -104,7 +104,7 @@ namespace BalanceApp.BL.Controller
         public void Save()
         {
             var formatter = new BinaryFormatter();
-            using (var file = new FileStream("users.dat", FileMode.OpenOrCreate))
+            using (var file = new FileStream("users.dat", FileMode.Create))
             {
                 formatter.Serialize(file, Users);
             }

@@ -14,7 +14,14 @@ namespace BalanceApp.View
 {
     public partial class App : Form
     {
+        /// <summary>
+        /// Current User.
+        /// </summary>
         private readonly User currentUser;
+        /// <summary>
+        /// Own user profile
+        /// </summary>
+        /// <param name="user"> current user. </param>
         public App(User user)
         {
             InitializeComponent();
@@ -23,14 +30,19 @@ namespace BalanceApp.View
 
         private void App_Load(object sender, EventArgs e)
         {
-            RestartData();
+            RestartData(GetBalanceList(currentUser.Expenses), ExpensesView);
+            RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
         }
-
-        private List<Balance> GetExpensesList()
+        /// <summary>
+        /// Getting list of incomes or expenses.
+        /// </summary>
+        /// <param name="balance"> balance list. </param>
+        /// <returns></returns>
+        private List<Balance> GetBalanceList(List<Balance> balance)
         {
-            if (currentUser.Expenses != null)
+            if (balance != null)
             {
-                return currentUser.Expenses;
+                return balance;
             }
             else
             {
@@ -38,32 +50,50 @@ namespace BalanceApp.View
             }
         }
 
+       
+        /// <summary>
+        ///  Add new expenses to ExpensesView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExpAddButton_Click(object sender, EventArgs e)
         {
             var stuff = new Balance("kek", 100);
             currentUser.Expenses.Insert(0, stuff);
-            RestartData();
+            RestartData(GetBalanceList(currentUser.Expenses),ExpensesView);
             
         }
 
-        private void RestartData()
+
+        /// <summary>
+        /// Refresh View data of interface.
+        /// </summary>
+        /// <param name="balance"></param>
+        /// <param name="listView"></param>
+        private void RestartData(List<Balance> balance,ListView listView)
         {
-            Expenses.Items.Clear();
-            var items = GetExpensesList();
+            listView.Items.Clear();
+            
+            var items = GetBalanceList(balance);
             foreach (var item in items)
             {
                 var row = new string[] { item.Name, item.ToString() };
                 var lvi = new ListViewItem(row);
                 lvi.Tag = item;
-                Expenses.Items.Add(lvi);
+                listView.Items.Add(lvi);
                 
             }
         }
-
-        private void App_FormClosing(object sender, FormClosingEventArgs e)
+        /// <summary>
+        /// Add new incomes to IncomesView.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IncAddButton_Click(object sender, EventArgs e)
         {
-            // TODO: Дописать сохранение списков для пользователя.
-            //var controller = new UserController("e");
+            var stuff = new Balance("kek", 100);
+            currentUser.Incomes.Insert(0, stuff);
+            RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
         }
     }
 }
