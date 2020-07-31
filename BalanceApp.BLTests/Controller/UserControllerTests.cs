@@ -19,7 +19,7 @@ namespace BalanceApp.BL.Controller.Tests
             //Act
             var controller = new UserController(userName);
 
-            //Accert
+            //Assert
             Assert.AreEqual(userName, controller.CurrentUser.Name);
         }
     }

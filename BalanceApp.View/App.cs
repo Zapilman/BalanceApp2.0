@@ -32,10 +32,10 @@ namespace BalanceApp.View
         {
             RestartData(GetBalanceList(currentUser.Expenses), ExpensesView);
             RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
-            ShowCountOfIncomes(currentUser.Incomes);
-            ShowCountOfExpenses(currentUser.Expenses);
-            ShowCountResult(currentUser.Incomes,currentUser.Expenses);
-            // TODO: аргументы и методы повторяються.
+            ShowIncomes.Text += GetCountOf(currentUser.Incomes);
+            ShowExpenses.Text += GetCountOf(currentUser.Expenses);
+            ShowResult.Text += GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses);
+            // TODO: Перевести инты в дабл,сделать реагирование надписей на изменение формы.
         }
         /// <summary>
         /// Getting list of incomes or expenses.
@@ -62,7 +62,7 @@ namespace BalanceApp.View
         /// <param name="e"></param>
         private void ExpAddButton_Click(object sender, EventArgs e)
         {
-            var stuff = new Balance("kek", 100);
+            var stuff = new Balance("kek", 100.3);
             currentUser.Expenses.Insert(0, stuff);
             RestartData(GetBalanceList(currentUser.Expenses),ExpensesView);
             
@@ -81,7 +81,7 @@ namespace BalanceApp.View
             var items = GetBalanceList(balance);
             foreach (var item in items)
             {
-                var row = new string[] { item.Name, item.ToString() };
+                var row = new string[] { item.Name, item.ToString()+"$" };//Подогнать валюту под локализацию.
                 var lvi = new ListViewItem(row);
                 lvi.Tag = item;
                 listView.Items.Add(lvi);
@@ -95,45 +95,26 @@ namespace BalanceApp.View
         /// <param name="e"></param>
         private void IncAddButton_Click(object sender, EventArgs e)
         {
-            var stuff = new Balance("kek", 100);
+            var stuff = new Balance("kek",100.3);//В коннструктор идёт только целое число.
             currentUser.Incomes.Insert(0, stuff);
             RestartData(GetBalanceList(currentUser.Incomes), IncomesView);
         }
 
-        private void ShowCountOfIncomes(List<Balance> incomes)
-        {
-            var sumOfIncomes = 0;
-            foreach(var income in incomes)
-            {
-                sumOfIncomes += income.Cost;
-            }
-            ShowIncomes.Text = $"Incomes: {sumOfIncomes}";
-        }
+        
 
-        private void ShowCountOfExpenses(List<Balance> expenses)
+        private double GetCountOf(List<Balance> balance)
         {
-            var sumOfExpenses = 0;
-            foreach (var expense in expenses)
+            double sumOf = 0.0;
+            foreach(var item in balance)
             {
-                sumOfExpenses += expense.Cost;
+                sumOf += item.Cost;
             }
-            ShowExpenses.Text = $"Expenses: {sumOfExpenses}";
-        }
 
-        private void ShowCountResult(List<Balance> incomes, List<Balance> expenses)
-        {
-            var resultSum = 0;
-            //сделать менее громоздким(создать поля или запилить все три метода на отображение в один)
-            foreach (var income in incomes)
-            {
-                resultSum += income.Cost;
-            }
-            foreach (var expense in expenses)
-            {
-                resultSum += expense.Cost;
-            }
-            ShowResult.Text = $"Expenses: {resultSum}";
+            return sumOf;
+            
+            
         }
+   
 
     }
 }
