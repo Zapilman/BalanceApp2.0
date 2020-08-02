@@ -40,6 +40,8 @@
             this.ShowIncomes = new System.Windows.Forms.Label();
             this.ShowExpenses = new System.Windows.Forms.Label();
             this.ShowResult = new System.Windows.Forms.Label();
+            this.IncRemButton = new System.Windows.Forms.Button();
+            this.ExpRemButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // IncomesView
@@ -90,13 +92,12 @@
             // 
             // ExpAddButton
             // 
-            this.ExpAddButton.Location = new System.Drawing.Point(621, 50);
+            this.ExpAddButton.Location = new System.Drawing.Point(621, 57);
             this.ExpAddButton.Name = "ExpAddButton";
             this.ExpAddButton.Size = new System.Drawing.Size(75, 23);
             this.ExpAddButton.TabIndex = 4;
             this.ExpAddButton.Text = "Add";
             this.ExpAddButton.UseVisualStyleBackColor = true;
-            this.ExpAddButton.Click += new System.EventHandler(this.ExpAddButton_Click);
             // 
             // IncAddButton
             // 
@@ -106,7 +107,6 @@
             this.IncAddButton.TabIndex = 5;
             this.IncAddButton.Text = "Add";
             this.IncAddButton.UseVisualStyleBackColor = true;
-            this.IncAddButton.Click += new System.EventHandler(this.IncAddButton_Click);
             // 
             // button1
             // 
@@ -144,11 +144,31 @@
             this.ShowResult.TabIndex = 9;
             this.ShowResult.Text = "Result: ";
             // 
+            // IncRemButton
+            // 
+            this.IncRemButton.Location = new System.Drawing.Point(147, 57);
+            this.IncRemButton.Name = "IncRemButton";
+            this.IncRemButton.Size = new System.Drawing.Size(90, 23);
+            this.IncRemButton.TabIndex = 10;
+            this.IncRemButton.Text = "Delete";
+            this.IncRemButton.UseVisualStyleBackColor = true;
+            // 
+            // ExpRemButton
+            // 
+            this.ExpRemButton.Location = new System.Drawing.Point(723, 57);
+            this.ExpRemButton.Name = "ExpRemButton";
+            this.ExpRemButton.Size = new System.Drawing.Size(75, 23);
+            this.ExpRemButton.TabIndex = 11;
+            this.ExpRemButton.Text = "Delete";
+            this.ExpRemButton.UseVisualStyleBackColor = true;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 703);
+            this.Controls.Add(this.ExpRemButton);
+            this.Controls.Add(this.IncRemButton);
             this.Controls.Add(this.ShowResult);
             this.Controls.Add(this.ShowExpenses);
             this.Controls.Add(this.ShowIncomes);
@@ -179,5 +199,7 @@
         private System.Windows.Forms.Label ShowIncomes;
         private System.Windows.Forms.Label ShowExpenses;
         private System.Windows.Forms.Label ShowResult;
+        private System.Windows.Forms.Button IncRemButton;
+        private System.Windows.Forms.Button ExpRemButton;
     }
 }
