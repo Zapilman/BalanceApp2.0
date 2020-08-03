@@ -10,6 +10,8 @@ namespace BalanceApp.BL.Model
     [Serializable]
     public class User
     {
+        public int Id { get; set; }
+
         #region Properties
         /// <summary>
         /// Name.

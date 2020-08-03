@@ -1,13 +1,6 @@
-﻿using BalanceApp.BL.Controller;
-using BalanceApp.BL.Model;
+﻿using BalanceApp.BL.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BalanceApp.View
@@ -27,8 +20,10 @@ namespace BalanceApp.View
             InitializeComponent();
             ExpAddButton.Click += (s, e) => { var balance = new Balance("kek", 103.3); AddButton(ExpAddButton, balance); };
             IncAddButton.Click += (s, e) => { var balance = new Balance("kek", 103.3); AddButton(IncAddButton, balance); };
-            IncRemButton.Click += (s, e) => { RemoveButton(IncRemButton, IncomesView, currentUser.Incomes, ShowIncomes,"Incomes"); };
-            ExpRemButton.Click += (s, e) => { RemoveButton(ExpRemButton, ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
+            IncRemButton.Click += (s, e) => { RemoveButton(IncomesView, currentUser.Incomes, ShowIncomes,"Incomes"); };
+            ExpRemButton.Click += (s, e) => { RemoveButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
+            IncClearButton.Click += (s, e) => { ClearButton(IncomesView, currentUser.Incomes, ShowIncomes, "Incomes"); };
+            ExpClearButton.Click += (s, e) => { ClearButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
             currentUser = user;
         }
 
@@ -116,8 +111,7 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RemoveButton(Button button, 
-                                  ListView listView,
+        private void RemoveButton(ListView listView,
                                   List<Balance> balances,
                                   Label label,
                                   string balance)
@@ -134,6 +128,17 @@ namespace BalanceApp.View
             }
             
             RefreshData(GetBalanceList(balances), listView);
+            ChangeText(label, balances, balance);
+        }
+
+        private void ClearButton(ListView listView,
+                                List<Balance> balances,
+                                Label label,
+                                string balance )
+        {
+            listView.Items.Clear(); 
+            balances.Clear();
+            RefreshData(balances, listView);
             ChangeText(label, balances, balance);
         }
 

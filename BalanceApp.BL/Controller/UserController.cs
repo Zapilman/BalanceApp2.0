@@ -10,7 +10,7 @@ namespace BalanceApp.BL.Controller
     /// <summary>
     /// UserController.
     /// </summary>
-    public class UserController
+    public class UserController:ControllerBase
     {
         /// <summary>
         /// User List.
@@ -103,11 +103,8 @@ namespace BalanceApp.BL.Controller
         /// </summary>
         public void Save()
         {
-            var formatter = new BinaryFormatter();
-            using (var file = new FileStream("users.dat", FileMode.Create))
-            {
-                formatter.Serialize(file, Users);
-            }
+            Save("users.dat",Users);
+
         }
         /// <summary>
         /// Geting user data.
@@ -115,18 +112,7 @@ namespace BalanceApp.BL.Controller
         /// <returns></returns>
         private List<User> GetUsersData()
         {
-            var formatter = new BinaryFormatter();
-            using (var file = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if (file.Length>0 && formatter.Deserialize(file) is List<User> user)
-                {
-                    return user;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-            }
+           return Load<List<User>>("users.dat");
         }
 
     }

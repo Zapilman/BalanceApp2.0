@@ -42,6 +42,8 @@
             this.ShowResult = new System.Windows.Forms.Label();
             this.IncRemButton = new System.Windows.Forms.Button();
             this.ExpRemButton = new System.Windows.Forms.Button();
+            this.IncClearButton = new System.Windows.Forms.Button();
+            this.ExpClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // IncomesView
@@ -162,11 +164,31 @@
             this.ExpRemButton.Text = "Delete";
             this.ExpRemButton.UseVisualStyleBackColor = true;
             // 
+            // IncClearButton
+            // 
+            this.IncClearButton.Location = new System.Drawing.Point(260, 57);
+            this.IncClearButton.Name = "IncClearButton";
+            this.IncClearButton.Size = new System.Drawing.Size(90, 23);
+            this.IncClearButton.TabIndex = 12;
+            this.IncClearButton.Text = "Clear";
+            this.IncClearButton.UseVisualStyleBackColor = true;
+            // 
+            // ExpClearButton
+            // 
+            this.ExpClearButton.Location = new System.Drawing.Point(820, 57);
+            this.ExpClearButton.Name = "ExpClearButton";
+            this.ExpClearButton.Size = new System.Drawing.Size(90, 23);
+            this.ExpClearButton.TabIndex = 13;
+            this.ExpClearButton.Text = "Clear";
+            this.ExpClearButton.UseVisualStyleBackColor = true;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 703);
+            this.Controls.Add(this.ExpClearButton);
+            this.Controls.Add(this.IncClearButton);
             this.Controls.Add(this.ExpRemButton);
             this.Controls.Add(this.IncRemButton);
             this.Controls.Add(this.ShowResult);
@@ -201,5 +223,7 @@
         private System.Windows.Forms.Label ShowResult;
         private System.Windows.Forms.Button IncRemButton;
         private System.Windows.Forms.Button ExpRemButton;
+        private System.Windows.Forms.Button IncClearButton;
+        private System.Windows.Forms.Button ExpClearButton;
     }
 }

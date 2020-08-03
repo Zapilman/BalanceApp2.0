@@ -8,6 +8,9 @@ namespace BalanceApp.BL.Model
     [Serializable]
     public class Balance
     {
+        public int Id { get; set; }
+
+
         /// <summary>
         /// Name.
         /// </summary>
