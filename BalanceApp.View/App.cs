@@ -36,9 +36,9 @@ namespace BalanceApp.View
         {
             RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
             RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
-            ShowIncomes.Text += GetCountOf(currentUser.Incomes);
-            ShowExpenses.Text += GetCountOf(currentUser.Expenses);
-            ShowResult.Text += GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses);
+            ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
+            ShowIncomes.Text = "Incomes: " + Convert.ToString(GetCountOf(currentUser.Incomes));
+            ShowResult.Text = "Result: " + Convert.ToString(GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses));
         }
         /// <summary>
         /// Getting list of incomes or expenses.
@@ -118,9 +118,9 @@ namespace BalanceApp.View
         {
             try
             {
-                var stuff = listView.SelectedItems[0];
-                balances.RemoveAt(stuff.Index);
-                listView.Items.Remove(stuff);
+                var item = listView.SelectedItems[0];
+                balances.RemoveAt(item.Index);
+                listView.Items.Remove(item);
             }
             catch 
             {
@@ -166,6 +166,13 @@ namespace BalanceApp.View
             return sumOf;
 
 
+        }
+
+        private void Profile_Click(object sender, EventArgs e)
+        {
+            MyAccount myAccount = new MyAccount(currentUser);
+            myAccount.ShowDialog();
+            App_Load(sender, e);
         }
     }
 }

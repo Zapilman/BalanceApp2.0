@@ -44,6 +44,7 @@
             this.ExpRemButton = new System.Windows.Forms.Button();
             this.IncClearButton = new System.Windows.Forms.Button();
             this.ExpClearButton = new System.Windows.Forms.Button();
+            this.Profile = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // IncomesView
@@ -182,11 +183,22 @@
             this.ExpClearButton.Text = "Clear";
             this.ExpClearButton.UseVisualStyleBackColor = true;
             // 
+            // Profile
+            // 
+            this.Profile.AutoSize = true;
+            this.Profile.Location = new System.Drawing.Point(50, 13);
+            this.Profile.Name = "Profile";
+            this.Profile.Size = new System.Drawing.Size(48, 17);
+            this.Profile.TabIndex = 14;
+            this.Profile.Text = "Profile";
+            this.Profile.Click += new System.EventHandler(this.Profile_Click);
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 703);
+            this.Controls.Add(this.Profile);
             this.Controls.Add(this.ExpClearButton);
             this.Controls.Add(this.IncClearButton);
             this.Controls.Add(this.ExpRemButton);
@@ -225,5 +237,6 @@
         private System.Windows.Forms.Button ExpRemButton;
         private System.Windows.Forms.Button IncClearButton;
         private System.Windows.Forms.Button ExpClearButton;
+        private System.Windows.Forms.Label Profile;
     }
 }

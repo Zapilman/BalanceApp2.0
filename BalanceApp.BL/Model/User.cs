@@ -16,7 +16,7 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Birthday.
         /// </summary>
@@ -32,7 +32,7 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// Password.
         /// </summary>
-        public string Password { get; }
+        public string Password { get; set; }
         /// <summary>
         /// Login.
         /// </summary>
