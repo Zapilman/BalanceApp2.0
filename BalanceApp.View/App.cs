@@ -18,8 +18,8 @@ namespace BalanceApp.View
         public App(User user)
         {
             InitializeComponent();
-            ExpAddButton.Click += (s, e) => { var balance = new Balance("kek", 103.3); AddButton(ExpAddButton, balance); };
-            IncAddButton.Click += (s, e) => { var balance = new Balance("kek", 103.3); AddButton(IncAddButton, balance); };
+            ExpAddButton.Click += (s, e) => { AddButton(ExpAddButton); };
+            IncAddButton.Click += (s, e) => { AddButton(IncAddButton); };
             IncRemButton.Click += (s, e) => { RemoveButton(IncomesView, currentUser.Incomes, ShowIncomes,"Incomes"); };
             ExpRemButton.Click += (s, e) => { RemoveButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
             IncClearButton.Click += (s, e) => { ClearButton(IncomesView, currentUser.Incomes, ShowIncomes, "Incomes"); };
@@ -88,17 +88,18 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="button"></param>
         /// <param name="stuff"></param>
-        private void AddButton(Button button,Balance stuff)
+        private void AddButton(Button button)
         {
             if(button.Name == "ExpAddButton")
             {
-                currentUser.Expenses.Insert(0, stuff);
+
+                AddWindow(currentUser.Expenses);
                 RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
                 ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
             }
             else
             {
-                currentUser.Incomes.Insert(0, stuff);
+                AddWindow(currentUser.Incomes);
                 RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
                 ShowIncomes.Text = "Incomes: " + Convert.ToString(GetCountOf(currentUser.Incomes));
             }
@@ -130,6 +131,13 @@ namespace BalanceApp.View
             RefreshData(GetBalanceList(balances), listView);
             ChangeText(label, balances, balance);
         }
+
+        private void AddWindow(List<Balance> balances)
+        {
+            AddWindow addWindow = new AddWindow(balances);
+            addWindow.ShowDialog();
+        }
+
 
         private void ClearButton(ListView listView,
                                 List<Balance> balances,

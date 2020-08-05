@@ -45,13 +45,16 @@
             this.IncClearButton = new System.Windows.Forms.Button();
             this.ExpClearButton = new System.Windows.Forms.Button();
             this.Profile = new System.Windows.Forms.Label();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // IncomesView
             // 
             this.IncomesView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.IncomesView.GridLines = true;
             this.IncomesView.HideSelection = false;
             this.IncomesView.Location = new System.Drawing.Point(50, 86);
@@ -64,7 +67,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Stuff";
-            this.columnHeader1.Width = 100;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -75,7 +78,8 @@
             // 
             this.ExpensesView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Stuff,
-            this.Cost});
+            this.Cost,
+            this.columnHeader4});
             this.ExpensesView.GridLines = true;
             this.ExpensesView.HideSelection = false;
             this.ExpensesView.Location = new System.Drawing.Point(621, 86);
@@ -87,10 +91,12 @@
             // 
             // Stuff
             // 
-            this.Stuff.Width = 303;
+            this.Stuff.Text = "Stuff";
+            this.Stuff.Width = 200;
             // 
             // Cost
             // 
+            this.Cost.Text = "Cost";
             this.Cost.Width = 120;
             // 
             // ExpAddButton
@@ -193,6 +199,16 @@
             this.Profile.Text = "Profile";
             this.Profile.Click += new System.EventHandler(this.Profile_Click);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Date";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Date";
+            this.columnHeader4.Width = 100;
+            // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,5 +254,7 @@
         private System.Windows.Forms.Button IncClearButton;
         private System.Windows.Forms.Button ExpClearButton;
         private System.Windows.Forms.Label Profile;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
