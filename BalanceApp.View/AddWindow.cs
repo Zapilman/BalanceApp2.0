@@ -14,10 +14,15 @@ namespace BalanceApp.View
     public partial class AddWindow : Form
     {
         private List<Balance> balances;
-        private readonly string name;
-        public AddWindow(List<Balance> balances)
+        private readonly List<Category> categories;
+        public AddWindow(List<Balance> balances, List<Category> categories )
         {
             this.balances = balances;
+            this.categories = categories;
+            //foreach(var item in categories)
+            //{
+            //    categoryBox.Items.Insert(0, item);
+            //}
             InitializeComponent();
         }
 
@@ -25,14 +30,15 @@ namespace BalanceApp.View
         {
             if(stuffBox.Text != null)
             {
+                var category = categories.SingleOrDefault(c => c.Name == categoryBox.Text);
                 try
                 {
-                    var balance = new Balance(stuffBox.Text, Convert.ToDouble(countBox.Text));
+                    var balance = new Balance(stuffBox.Text, Convert.ToDouble(countBox.Text), DateTime.Today,category);
                     balances.Insert(0, balance);
                 }
                 catch
                 {
-                    var balance = new Balance(stuffBox.Text, Convert.ToDouble(countBox.Text.Replace('.', ',')));
+                    var balance = new Balance(stuffBox.Text, Convert.ToDouble(countBox.Text.Replace('.', ',')),DateTime.Today,category);
                     balances.Insert(0, balance);
                 }
                 this.Close();

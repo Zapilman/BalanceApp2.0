@@ -1,4 +1,5 @@
-﻿using BalanceApp.BL.Model;
+﻿using BalanceApp.BL.Controller;
+using BalanceApp.BL.Model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -58,7 +59,7 @@ namespace BalanceApp.View
         }
 
        
-        
+        // TODO: Сделать разделение на доходы и расходы в зависимости от выбранной таблицы при создании AddWindow.
 
 
         /// <summary>
@@ -73,11 +74,11 @@ namespace BalanceApp.View
             var items = GetBalanceList(balance);
             foreach (var item in items)
             {
-                var row = new string[] { item.Name, item.ToString()+"$" };//Подогнать валюту под локализацию. 
+                var row = new string[] { item.Name, Convert.ToString(item.Cost) +"$",item.dateTime.ToShortDateString(), item.category.Name };//Подогнать валюту под локализацию. 
                 var lvi = new ListViewItem(row);
                 lvi.Tag = item;
+                lvi.ToolTipText = lvi.Text.ToString();
                 listView.Items.Add(lvi);
-                // TODO: Подумать как без перезалива данный обновлять таблицы(найти способ добавлять и удалять балансы)
             }
 
         }
@@ -134,7 +135,8 @@ namespace BalanceApp.View
 
         private void AddWindow(List<Balance> balances)
         {
-            AddWindow addWindow = new AddWindow(balances);
+            var categoryController = new CategoryController(currentUser);
+            AddWindow addWindow = new AddWindow(balances,categoryController.categories);
             addWindow.ShowDialog();
         }
 
@@ -182,5 +184,7 @@ namespace BalanceApp.View
             myAccount.ShowDialog();
             App_Load(sender, e);
         }
+
+        
     }
 }

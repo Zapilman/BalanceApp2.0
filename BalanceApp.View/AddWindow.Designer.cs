@@ -31,6 +31,7 @@
             this.stuffBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.countBox = new System.Windows.Forms.TextBox();
+            this.categoryBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // stuffBox
@@ -59,11 +60,23 @@
             this.countBox.Size = new System.Drawing.Size(261, 38);
             this.countBox.TabIndex = 2;
             // 
+            // categoryBox
+            // 
+            this.categoryBox.FormattingEnabled = true;
+            this.categoryBox.Items.AddRange(new object[] {
+            "Salary",
+            "Gifts"});
+            this.categoryBox.Location = new System.Drawing.Point(266, 94);
+            this.categoryBox.Name = "categoryBox";
+            this.categoryBox.Size = new System.Drawing.Size(216, 24);
+            this.categoryBox.TabIndex = 3;
+            // 
             // AddWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 97);
+            this.ClientSize = new System.Drawing.Size(800, 158);
+            this.Controls.Add(this.categoryBox);
             this.Controls.Add(this.countBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.stuffBox);
@@ -79,5 +92,6 @@
         private System.Windows.Forms.TextBox stuffBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox countBox;
+        private System.Windows.Forms.ComboBox categoryBox;
     }
 }

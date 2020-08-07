@@ -103,7 +103,7 @@ namespace BalanceApp.BL.Controller
         /// </summary>
         public void Save()
         {
-            Save("users.dat",Users);
+            Save(Users);
 
         }
         /// <summary>
@@ -112,7 +112,7 @@ namespace BalanceApp.BL.Controller
         /// <returns></returns>
         private List<User> GetUsersData()
         {
-           return Load<List<User>>("users.dat");
+           return Load<User>() ?? new List<User>();
         }
 
     }

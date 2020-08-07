@@ -1,34 +1,37 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BalanceApp.BL.Controller
 {
     public class SerializeDataSaver : IDataSaver
     {
-       
-
-        public void Save(string filename, object item)
+        public List<T> Load<T>() where T : class
         {
             var formatter = new BinaryFormatter();
-            using (var file = new FileStream(filename, FileMode.Create))
-            {
-                formatter.Serialize(file, item);
-            }
-        }
+            var filename = typeof(T).Name;
 
-        public T Load<T>(string filename)
-        {
-            var formatter = new BinaryFormatter();
-            using (var file = new FileStream(filename, FileMode.OpenOrCreate))
+            using(var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                if (file.Length > 0 && formatter.Deserialize(file) is T items)
+                if(fs.Length>0 && formatter.Deserialize(fs) is List<T> items)
                 {
                     return items;
                 }
                 else
                 {
-                    return default;
+                    return new List<T>();
                 }
+            }
+        }
+
+        public void Save<T>(List<T> item) where T : class
+        {
+            var formatter = new BinaryFormatter();
+            var filename = typeof(T).Name;
+
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, item);
             }
         }
     }

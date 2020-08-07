@@ -6,16 +6,21 @@ namespace BalanceApp.BL.Controller
 {
     public abstract class ControllerBase
     {
-        protected IDataSaver saver = new SerializeDataSaver();
+        protected IDataSaver manager = new SerializeDataSaver();
 
-        protected void Save(string filename, object item)
+        protected void Save<T>(List<T> item) where T : class
         {
-            saver.Save(filename, item);
+            manager.Save(item);
         }
 
-        protected T Load<T>(string filename)
+        protected List<T> Load<T>() where T : class
         {
-           return saver.Load<T>(filename);
+            return manager.Load<T>();
         }
     }
+
+    
+
+
+
 }

@@ -6,9 +6,9 @@ namespace BalanceApp.BL.Controller
 {
     public interface IDataSaver
     {
-        void Save(string filename, object item);
+        void Save<T>(List<T> item) where T: class;
 
-        T Load<T>(string filename);
+        List<T> Load<T>() where T : class;
 
     }
 }

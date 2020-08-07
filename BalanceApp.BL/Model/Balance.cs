@@ -8,9 +8,10 @@ namespace BalanceApp.BL.Model
     [Serializable]
     public class Balance
     {
-        public int Id { get; set; }
-
-
+        /// <summary>
+        /// DateTime of the stuff registration.
+        /// </summary>
+        public DateTime dateTime { get; }
         /// <summary>
         /// Name.
         /// </summary>
@@ -20,12 +21,16 @@ namespace BalanceApp.BL.Model
         /// </summary>
         public double Cost { get; }
         /// <summary>
+        /// Category.
+        /// </summary>
+        public Category category { get; }
+        /// <summary>
         /// To Create a new balance.
         /// </summary>
         /// <param name="name"> Name of something. </param>
         /// <param name="cost"> Cost of something. </param>
 
-        public Balance(string name, double cost)
+        public Balance(string name, double cost, DateTime dateTime, Category category)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -35,12 +40,14 @@ namespace BalanceApp.BL.Model
             
 
             Name = name;
+            this.dateTime = dateTime;
+            this.category = category ?? throw new ArgumentNullException(nameof(category));
             Cost = Convert.ToDouble(cost);
         }
 
         public override string ToString()
         {
-            return $"{Cost}";
+            return $"{Name}: {Cost} $ : {dateTime}";
         }
 
 

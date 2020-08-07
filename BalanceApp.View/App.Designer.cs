@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.IncomesView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ExpensesView = new System.Windows.Forms.ListView();
             this.Stuff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Cost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ExpAddButton = new System.Windows.Forms.Button();
             this.IncAddButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.ShowIncomes = new System.Windows.Forms.Label();
             this.ShowExpenses = new System.Windows.Forms.Label();
             this.ShowResult = new System.Windows.Forms.Label();
@@ -45,8 +47,9 @@
             this.IncClearButton = new System.Windows.Forms.Button();
             this.ExpClearButton = new System.Windows.Forms.Button();
             this.Profile = new System.Windows.Forms.Label();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.incCategory = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // IncomesView
@@ -54,36 +57,50 @@
             this.IncomesView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.category});
+            this.IncomesView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.IncomesView.FullRowSelect = true;
             this.IncomesView.GridLines = true;
             this.IncomesView.HideSelection = false;
+            this.IncomesView.LabelEdit = true;
             this.IncomesView.Location = new System.Drawing.Point(50, 86);
             this.IncomesView.Name = "IncomesView";
+            this.IncomesView.ShowItemToolTips = true;
             this.IncomesView.Size = new System.Drawing.Size(502, 427);
             this.IncomesView.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.IncomesView, "kek");
             this.IncomesView.UseCompatibleStateImageBehavior = false;
             this.IncomesView.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Stuff";
-            this.columnHeader1.Width = 200;
+            this.columnHeader1.Width = 100;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Count";
             this.columnHeader2.Width = 100;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Date";
+            this.columnHeader3.Width = 100;
+            // 
             // ExpensesView
             // 
             this.ExpensesView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Stuff,
             this.Cost,
-            this.columnHeader4});
+            this.date,
+            this.incCategory});
+            this.ExpensesView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExpensesView.GridLines = true;
             this.ExpensesView.HideSelection = false;
             this.ExpensesView.Location = new System.Drawing.Point(621, 86);
             this.ExpensesView.Name = "ExpensesView";
+            this.ExpensesView.ShowItemToolTips = true;
             this.ExpensesView.Size = new System.Drawing.Size(468, 427);
             this.ExpensesView.TabIndex = 3;
             this.ExpensesView.UseCompatibleStateImageBehavior = false;
@@ -92,12 +109,17 @@
             // Stuff
             // 
             this.Stuff.Text = "Stuff";
-            this.Stuff.Width = 200;
+            this.Stuff.Width = 100;
             // 
             // Cost
             // 
             this.Cost.Text = "Cost";
             this.Cost.Width = 120;
+            // 
+            // date
+            // 
+            this.date.Text = "Date";
+            this.date.Width = 100;
             // 
             // ExpAddButton
             // 
@@ -116,15 +138,6 @@
             this.IncAddButton.TabIndex = 5;
             this.IncAddButton.Text = "Add";
             this.IncAddButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(370, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(8, 8);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ShowIncomes
             // 
@@ -199,15 +212,21 @@
             this.Profile.Text = "Profile";
             this.Profile.Click += new System.EventHandler(this.Profile_Click);
             // 
-            // columnHeader3
+            // toolTip1
             // 
-            this.columnHeader3.Text = "Date";
-            this.columnHeader3.Width = 100;
+            this.toolTip1.AutoPopDelay = 5000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
             // 
-            // columnHeader4
+            // category
             // 
-            this.columnHeader4.Text = "Date";
-            this.columnHeader4.Width = 100;
+            this.category.Text = "Category";
+            this.category.Width = 150;
+            // 
+            // incCategory
+            // 
+            this.incCategory.Text = "Category";
+            this.incCategory.Width = 100;
             // 
             // App
             // 
@@ -222,7 +241,6 @@
             this.Controls.Add(this.ShowResult);
             this.Controls.Add(this.ShowExpenses);
             this.Controls.Add(this.ShowIncomes);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.IncAddButton);
             this.Controls.Add(this.ExpAddButton);
             this.Controls.Add(this.ExpensesView);
@@ -243,7 +261,6 @@
         private System.Windows.Forms.ColumnHeader Cost;
         private System.Windows.Forms.Button ExpAddButton;
         private System.Windows.Forms.Button IncAddButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Label ShowIncomes;
@@ -255,6 +272,9 @@
         private System.Windows.Forms.Button ExpClearButton;
         private System.Windows.Forms.Label Profile;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader date;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ColumnHeader category;
+        private System.Windows.Forms.ColumnHeader incCategory;
     }
 }

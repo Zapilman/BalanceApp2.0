@@ -10,7 +10,6 @@ namespace BalanceApp.BL.Model
     [Serializable]
     public class User
     {
-        public int Id { get; set; }
 
         #region Properties
         /// <summary>
@@ -38,14 +37,14 @@ namespace BalanceApp.BL.Model
         /// </summary>
         public string Login { get; }
 
+
         /// <summary>
-        /// To create a new user.
+        /// To create new user.
         /// </summary>
-        /// <param name="name"> Name of user. </param>
-        /// <param name="balance"> Balance of user. </param>
-        /// <param name="birthday"> Birthday of user. </param>
-        /// <param name="password"> Password of user. </param>
-        /// <param name="login"> Login of user. </param>
+        /// <param name="name"></param>
+        /// <param name="birthday"></param>
+        /// <param name="password"></param>
+        /// <param name="login"></param>
         #endregion
         public User(string name,
                     DateTime birthday,
@@ -99,5 +98,7 @@ namespace BalanceApp.BL.Model
         {
             return Name;
         }
+
+        
     }
 }
