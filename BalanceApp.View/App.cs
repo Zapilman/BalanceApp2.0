@@ -75,8 +75,10 @@ namespace BalanceApp.View
             foreach (var item in items)
             {
                 var row = new string[] { item.Name, Convert.ToString(item.Cost) +"$",item.dateTime.ToShortDateString(), item.category.Name };//Подогнать валюту под локализацию. 
-                var lvi = new ListViewItem(row);
-                lvi.Tag = item;
+                var lvi = new ListViewItem(row)
+                {
+                    Tag = item
+                };
                 lvi.ToolTipText = lvi.Text.ToString();
                 listView.Items.Add(lvi);
             }
@@ -94,13 +96,13 @@ namespace BalanceApp.View
             if(button.Name == "ExpAddButton")
             {
 
-                AddWindow(currentUser.Expenses);
+                AddWindow(currentUser.Expenses,"Expenses");
                 RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
                 ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
             }
             else
             {
-                AddWindow(currentUser.Incomes);
+                AddWindow(currentUser.Incomes,"Incomes");
                 RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
                 ShowIncomes.Text = "Incomes: " + Convert.ToString(GetCountOf(currentUser.Incomes));
             }
@@ -133,11 +135,21 @@ namespace BalanceApp.View
             ChangeText(label, balances, balance);
         }
 
-        private void AddWindow(List<Balance> balances)
+        private void AddWindow(List<Balance> balances,string type)
         {
             var categoryController = new CategoryController(currentUser);
-            AddWindow addWindow = new AddWindow(balances,categoryController.categories);
-            addWindow.ShowDialog();
+            var newcontroller = new List<Category>();
+            foreach (var category in categoryController.categories)
+            {
+                if (category.Type == type)
+                {
+                    newcontroller.Add(category);
+                }
+            }
+            using (AddWindow addWindow = new AddWindow(balances, newcontroller))
+            {
+                addWindow.ShowDialog();
+            }
         }
 
 
@@ -180,9 +192,11 @@ namespace BalanceApp.View
 
         private void Profile_Click(object sender, EventArgs e)
         {
-            MyAccount myAccount = new MyAccount(currentUser);
-            myAccount.ShowDialog();
-            App_Load(sender, e);
+            using (var profile = new Profile(currentUser))
+            {
+                profile.ShowDialog();
+                App_Load(sender, e);
+            }
         }
 
         

@@ -41,6 +41,7 @@
             this.userNameLabel.Size = new System.Drawing.Size(100, 23);
             this.userNameLabel.TabIndex = 0;
             this.userNameLabel.Text = "label1";
+            this.userNameLabel.Click += new System.EventHandler(this.userNameLabel_Click);
             // 
             // settingsLabel
             // 
@@ -65,6 +66,7 @@
             this.categoriesLabel.Size = new System.Drawing.Size(100, 23);
             this.categoriesLabel.TabIndex = 3;
             this.categoriesLabel.Text = "Categories   >";
+            this.categoriesLabel.Click += new System.EventHandler(this.categoriesLabel_Click);
             // 
             // Profile
             // 

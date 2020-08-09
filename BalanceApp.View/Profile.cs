@@ -25,5 +25,24 @@ namespace BalanceApp.View
         {
             userNameLabel.Text = currentuser.Name;
         }
+
+        
+
+        private void userNameLabel_Click(object sender, EventArgs e)
+        {
+            using(var myAccount = new MyAccount(currentuser))
+            {
+                this.Hide();
+                myAccount.ShowDialog();
+                Profile_Load(sender, e);
+                this.Show();
+            }
+        }
+
+        private void categoriesLabel_Click(object sender, EventArgs e)
+        {
+            var categories = new Categories(currentuser);
+            categories.Show();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BalanceApp.BL.Model
@@ -18,15 +19,19 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// Parent of category.
         /// </summary>
-        public Category Parent { get; set; }
+        public string Parent { get; set; }
+
+        
+        
         /// <summary>
         /// To create a new category.
         /// </summary>
         /// <param name="name"> category name. </param>
         /// <param name="type"> category type. </param>
         /// <param name="parent"> category parent. </param>
-        public Category(string name, string type, Category parent)
+        public Category(string name, string type, string parent)
         {
+            
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("message", nameof(name));
@@ -36,10 +41,13 @@ namespace BalanceApp.BL.Model
             {
                 throw new ArgumentException("message", nameof(type));
             }
-
+            
             Name = name;
             Type = type;
             Parent = parent;
         }
+
+        
+
      }
 }

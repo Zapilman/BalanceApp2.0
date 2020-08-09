@@ -38,7 +38,6 @@
             this.ChangePassButton = new System.Windows.Forms.Button();
             this.warningLabel = new System.Windows.Forms.Label();
             this.succsesLabel = new System.Windows.Forms.Label();
-            this.setLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -132,21 +131,11 @@
             this.succsesLabel.Size = new System.Drawing.Size(0, 17);
             this.succsesLabel.TabIndex = 11;
             // 
-            // setLabel
-            // 
-            this.setLabel.AutoSize = true;
-            this.setLabel.Location = new System.Drawing.Point(501, 33);
-            this.setLabel.Name = "setLabel";
-            this.setLabel.Size = new System.Drawing.Size(59, 17);
-            this.setLabel.TabIndex = 12;
-            this.setLabel.Text = "Settings";
-            // 
             // MyAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 450);
-            this.Controls.Add(this.setLabel);
             this.Controls.Add(this.succsesLabel);
             this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.ChangePassButton);
@@ -177,6 +166,5 @@
         private System.Windows.Forms.Button ChangePassButton;
         private System.Windows.Forms.Label warningLabel;
         private System.Windows.Forms.Label succsesLabel;
-        private System.Windows.Forms.Label setLabel;
     }
 }

@@ -19,11 +19,14 @@ namespace BalanceApp.View
         {
             this.balances = balances;
             this.categories = categories;
-            //foreach(var item in categories)
-            //{
-            //    categoryBox.Items.Insert(0, item);
-            //}
+            
             InitializeComponent();
+
+            foreach(var category in categories)
+            {
+                categoryBox.Items.Add(category.Name);
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,5 +51,7 @@ namespace BalanceApp.View
                 throw new ArgumentNullException();
             }
         }
+
+        
     }
 }

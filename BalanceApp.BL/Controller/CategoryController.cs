@@ -1,5 +1,6 @@
 ﻿using BalanceApp.BL.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BalanceApp.BL.Controller
 {
@@ -9,15 +10,14 @@ namespace BalanceApp.BL.Controller
 
         public List<Category> categories { get; }
 
-        private readonly List<Category> generalCategories = new List<Category>() { new Category("Salary", "Incomes", null),
-                                                                                 new Category("Gifts","Expenses",null)};
+        
         public CategoryController(User user)
         {
             currentUser = user ?? throw new System.ArgumentNullException(nameof(user));
             categories = GetAllCategories();
-            
             Save();
-            foreach (var item in generalCategories)
+            var generalcategories = new GeneralCategoryList();
+            foreach (var item in generalcategories.GetGeneralList())
             {
                 categories.Insert(0, item);
             }

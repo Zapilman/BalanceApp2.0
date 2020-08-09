@@ -63,9 +63,6 @@
             // categoryBox
             // 
             this.categoryBox.FormattingEnabled = true;
-            this.categoryBox.Items.AddRange(new object[] {
-            "Salary",
-            "Gifts"});
             this.categoryBox.Location = new System.Drawing.Point(266, 94);
             this.categoryBox.Name = "categoryBox";
             this.categoryBox.Size = new System.Drawing.Size(216, 24);
