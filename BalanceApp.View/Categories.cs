@@ -1,16 +1,15 @@
 ﻿using BalanceApp.BL.Controller;
 using BalanceApp.BL.Model;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BalanceApp.View
 {
     public partial class Categories : Form
     {
-        private readonly User currentUser;
+        private readonly User currentuser;
         public Categories(User user)
         {
-            
+            var categoryController = new CategoryController(currentUser);
             currentUser = user;
             InitializeComponent();
             FillCategoryNodes();
@@ -19,22 +18,22 @@ namespace BalanceApp.View
         private void FillCategoryNodes()
         {
             treeView1.Nodes.Clear();
-            var categoryController = new CategoryController(currentUser);
-            foreach (var category in categoryController.categories)
+            
+            foreach(var category in categories)
             {
                 TreeNode categoryNode = new TreeNode(Text = category.Name);
                 if (category.Parent != null)
                 {
                     continue;
                 }
-                FillTreeNode(categoryNode, categoryController);
+                FillTreeNode(categoryNode,categories);
                 treeView1.Nodes.Add(categoryNode);
             }
         }
 
-        private void FillTreeNode(TreeNode treeNode, CategoryController categoryController)
+        private void FillTreeNode(TreeNode treeNode, List<Category> categories)
         {
-            foreach(var category in categoryController.categories)
+            foreach(var category in categories)
             {
                 if(category.Parent == treeNode.Text)
                 {
@@ -50,9 +49,8 @@ namespace BalanceApp.View
             using(var addCategory = new AddCategoryForm(currentUser))
             {
                 addCategory.ShowDialog();
-                FillCategoryNodes();
+                FillCategoryNodes(addCategory.categories);
             }
-            
         }
     }
 }
