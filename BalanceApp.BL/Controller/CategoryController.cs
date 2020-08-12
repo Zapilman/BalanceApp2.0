@@ -6,37 +6,57 @@ namespace BalanceApp.BL.Controller
 {
      public class CategoryController : ControllerBase
      {
-        private readonly User currentUser;
-
+        List<Category> correctCategories = new List<Category>() { };
         public List<Category> categories { get; }
 
-        
+        public Category currentCategory { get; }
+
         public CategoryController(User user)
         {
-            currentUser = user ?? throw new System.ArgumentNullException(nameof(user));
-            categories = GetAllCategories();
-            Save();
-            var generalcategories = new GeneralCategoryList();
-            foreach (var item in generalcategories.GetGeneralList())
+            foreach(var category in GetCategories())
             {
-                categories.Insert(0, item);
+                if (category.Owner.Name == user.Name)
+                {
+                    correctCategories.Add(category);
+                }
+            }
+
+            categories = correctCategories;
+
+
+            var generalCategories = new GeneralCategoryList();
+            foreach (var category in generalCategories.GetGeneralList())
+            {
+                categories.Add(category);
             }
         }
 
-
-        
-
-        private List<Category> GetAllCategories()
+        public CategoryController(User user, string name, string type, string parent)
         {
-            return Load<Category>() ?? new List<Category>();
+            categories = GetCategories();
+            currentCategory = categories.SingleOrDefault(c => c.Name == name);
+            if(currentCategory != null)
+            {
+                return;
+            }
+            else
+            {
+                var category = new Category(user, name, type, parent);
+                categories.Add(category);
+                Save();
+            }
         }
+
 
         private void Save()
         {
             Save(categories);
         }
 
+        private List<Category> GetCategories()
+        {
+           return Load<Category>() ?? new List<Category>();
+        }
         
-
      }
 }

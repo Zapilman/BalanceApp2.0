@@ -14,7 +14,7 @@ namespace BalanceApp.BL.Model.Tests
         {
             //Arrange
             double num = 100.3;
-            var category = new Category("Salary", "Incomes", null);
+            var category = new Category(null,"Salary", "Incomes", null);
 
             //Act
             var balance = new Balance("choto", num,DateTime.Today,category);

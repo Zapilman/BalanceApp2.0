@@ -1,37 +1,39 @@
 ﻿using BalanceApp.BL.Controller;
 using BalanceApp.BL.Model;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace BalanceApp.View
 {
     public partial class Categories : Form
     {
-        private readonly User currentuser;
+        private readonly User currentUser;
         public Categories(User user)
         {
-            currentuser = user;
+            
+            currentUser = user;
             InitializeComponent();
             FillCategoryNodes();
         }
 
         private void FillCategoryNodes()
         {
-            var categoryController = new CategoryController(currentuser);
-            foreach(var category in categoryController.categories)
+            treeView1.Nodes.Clear();
+            var categoryController = new CategoryController(currentUser);
+            foreach (var category in categoryController.categories)
             {
                 TreeNode categoryNode = new TreeNode(Text = category.Name);
                 if (category.Parent != null)
                 {
                     continue;
                 }
-                FillTreeNode(categoryNode);
+                FillTreeNode(categoryNode, categoryController);
                 treeView1.Nodes.Add(categoryNode);
             }
         }
 
-        private void FillTreeNode(TreeNode treeNode)
+        private void FillTreeNode(TreeNode treeNode, CategoryController categoryController)
         {
-            var categoryController = new CategoryController(currentuser);
             foreach(var category in categoryController.categories)
             {
                 if(category.Parent == treeNode.Text)
@@ -40,6 +42,17 @@ namespace BalanceApp.View
                     treeNode.Nodes.Add(node);
                 }
             }
+        }
+
+        private void AddCategoryLabel_Click(object sender, System.EventArgs e)
+        {
+            
+            using(var addCategory = new AddCategoryForm(currentUser))
+            {
+                addCategory.ShowDialog();
+                FillCategoryNodes();
+            }
+            
         }
     }
 }

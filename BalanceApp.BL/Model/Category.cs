@@ -21,7 +21,7 @@ namespace BalanceApp.BL.Model
         /// </summary>
         public string Parent { get; set; }
 
-        
+        public User Owner { get; }
         
         /// <summary>
         /// To create a new category.
@@ -29,7 +29,7 @@ namespace BalanceApp.BL.Model
         /// <param name="name"> category name. </param>
         /// <param name="type"> category type. </param>
         /// <param name="parent"> category parent. </param>
-        public Category(string name, string type, string parent)
+        public Category(User user, string name, string type, string parent)
         {
             
             if (string.IsNullOrWhiteSpace(name))
@@ -45,6 +45,7 @@ namespace BalanceApp.BL.Model
             Name = name;
             Type = type;
             Parent = parent;
+            Owner = user;
         }
 
         

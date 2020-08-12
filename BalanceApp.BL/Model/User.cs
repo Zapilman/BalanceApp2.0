@@ -37,6 +37,7 @@ namespace BalanceApp.BL.Model
         /// </summary>
         public string Login { get; }
 
+        
 
         /// <summary>
         /// To create new user.
