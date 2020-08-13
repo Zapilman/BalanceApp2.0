@@ -6,11 +6,12 @@ namespace BalanceApp.View
 {
     public partial class Categories : Form
     {
-        private readonly User currentuser;
+        private readonly User currentUser;
         public Categories(User user)
         {
-            var categoryController = new CategoryController(currentUser);
             currentUser = user;
+            
+           
             InitializeComponent();
             FillCategoryNodes();
         }
@@ -18,22 +19,22 @@ namespace BalanceApp.View
         private void FillCategoryNodes()
         {
             treeView1.Nodes.Clear();
-            
-            foreach(var category in categories)
+            var categoryController = new CategoryController(currentUser);
+            foreach (var category in categoryController.categories)
             {
                 TreeNode categoryNode = new TreeNode(Text = category.Name);
                 if (category.Parent != null)
                 {
                     continue;
                 }
-                FillTreeNode(categoryNode,categories);
+                FillTreeNode(categoryNode, categoryController);
                 treeView1.Nodes.Add(categoryNode);
             }
         }
 
-        private void FillTreeNode(TreeNode treeNode, List<Category> categories)
+        private void FillTreeNode(TreeNode treeNode, CategoryController categoryController)
         {
-            foreach(var category in categories)
+            foreach(var category in categoryController.categories)
             {
                 if(category.Parent == treeNode.Text)
                 {
@@ -45,11 +46,10 @@ namespace BalanceApp.View
 
         private void AddCategoryLabel_Click(object sender, System.EventArgs e)
         {
-            
-            using(var addCategory = new AddCategoryForm(currentUser))
+            using (var addCategory = new AddCategoryForm(currentUser))
             {
                 addCategory.ShowDialog();
-                FillCategoryNodes(addCategory.categories);
+                FillCategoryNodes();
             }
         }
     }

@@ -34,6 +34,7 @@ namespace BalanceApp.BL.Controller
         public CategoryController(User user, string name, string type, string parent)
         {
             categories = GetCategories();
+            
             currentCategory = categories.SingleOrDefault(c => c.Name == name);
             if(currentCategory != null)
             {

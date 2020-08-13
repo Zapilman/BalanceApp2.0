@@ -15,7 +15,7 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// Name.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Cost.
         /// </summary>

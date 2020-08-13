@@ -2,6 +2,7 @@
 using BalanceApp.BL.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BalanceApp.View
@@ -12,6 +13,8 @@ namespace BalanceApp.View
         /// Current User.
         /// </summary>
         private readonly User currentUser;
+
+        private Balance oldBalance;
         /// <summary>
         /// Own user profile
         /// </summary>
@@ -26,6 +29,9 @@ namespace BalanceApp.View
             IncClearButton.Click += (s, e) => { ClearButton(IncomesView, currentUser.Incomes, ShowIncomes, "Incomes"); };
             ExpClearButton.Click += (s, e) => { ClearButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
             currentUser = user;
+            IncomesView.ContextMenuStrip = contextMenuStrip1;
+            ExpensesView.ContextMenuStrip = contextMenuStrip2;
+            
         }
 
         /// <summary>
@@ -199,6 +205,81 @@ namespace BalanceApp.View
             }
         }
 
-        
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Balance currentIncome = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
+            try
+            {
+                IncomesView.Items.Remove(IncomesView.SelectedItems[0]);
+                currentUser.Incomes.Remove(currentIncome);
+            }
+            catch
+            {
+                return;
+            }
+            
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Balance currentExpense = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
+            try
+            {
+                ExpensesView.Items.Remove(ExpensesView.SelectedItems[0]);
+                currentUser.Expenses.Remove(currentExpense);
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            oldBalance = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
+            if (IncomesView.SelectedItems[0] != null)
+            {
+                IncomesView.LabelEdit = true;
+                IncomesView.SelectedItems[0].BeginEdit();
+            }
+
+        }
+
+        private void IncomesView_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(e.Label))
+            {
+                MessageBox.Show("Please enter a valid value.");
+                return;
+            }
+            e.CancelEdit = true;
+            IncomesView.LabelEdit = false;
+            oldBalance.Name = e.Label;
+            RefreshData(currentUser.Incomes, IncomesView);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oldBalance = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
+            if (ExpensesView.SelectedItems[0] != null)
+            {
+                ExpensesView.LabelEdit = true;
+                ExpensesView.SelectedItems[0].BeginEdit();
+            }
+        }
+
+        private void ExpensesView_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(e.Label))
+            {
+                MessageBox.Show("Please enter a valid value.");
+                return;
+            }
+            e.CancelEdit = true;
+            ExpensesView.LabelEdit = false;
+            oldBalance.Name = e.Label;
+            RefreshData(currentUser.Expenses, ExpensesView);
+        }
     }
 }
