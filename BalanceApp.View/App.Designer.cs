@@ -44,18 +44,24 @@
             this.ShowIncomes = new System.Windows.Forms.Label();
             this.ShowExpenses = new System.Windows.Forms.Label();
             this.ShowResult = new System.Windows.Forms.Label();
-            this.IncRemButton = new System.Windows.Forms.Button();
-            this.ExpRemButton = new System.Windows.Forms.Button();
             this.IncClearButton = new System.Windows.Forms.Button();
             this.ExpClearButton = new System.Windows.Forms.Button();
             this.Profile = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nameToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.allToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -186,27 +192,9 @@
             this.ShowResult.TabIndex = 9;
             this.ShowResult.Text = "Result: ";
             // 
-            // IncRemButton
-            // 
-            this.IncRemButton.Location = new System.Drawing.Point(147, 57);
-            this.IncRemButton.Name = "IncRemButton";
-            this.IncRemButton.Size = new System.Drawing.Size(90, 23);
-            this.IncRemButton.TabIndex = 10;
-            this.IncRemButton.Text = "Delete";
-            this.IncRemButton.UseVisualStyleBackColor = true;
-            // 
-            // ExpRemButton
-            // 
-            this.ExpRemButton.Location = new System.Drawing.Point(723, 57);
-            this.ExpRemButton.Name = "ExpRemButton";
-            this.ExpRemButton.Size = new System.Drawing.Size(75, 23);
-            this.ExpRemButton.TabIndex = 11;
-            this.ExpRemButton.Text = "Delete";
-            this.ExpRemButton.UseVisualStyleBackColor = true;
-            // 
             // IncClearButton
             // 
-            this.IncClearButton.Location = new System.Drawing.Point(260, 57);
+            this.IncClearButton.Location = new System.Drawing.Point(462, 57);
             this.IncClearButton.Name = "IncClearButton";
             this.IncClearButton.Size = new System.Drawing.Size(90, 23);
             this.IncClearButton.TabIndex = 12;
@@ -215,7 +203,7 @@
             // 
             // ExpClearButton
             // 
-            this.ExpClearButton.Location = new System.Drawing.Point(820, 57);
+            this.ExpClearButton.Location = new System.Drawing.Point(999, 57);
             this.ExpClearButton.Name = "ExpClearButton";
             this.ExpClearButton.Size = new System.Drawing.Size(90, 23);
             this.ExpClearButton.TabIndex = 13;
@@ -243,32 +231,18 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(133, 52);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(133, 100);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(132, 24);
             this.toolStripMenuItem1.Text = "Remove";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.editToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(133, 52);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(210, 24);
-            this.toolStripMenuItem2.Text = "Remove";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -277,12 +251,90 @@
             this.toolStripMenuItem3.Text = "Edit";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nameToolStripMenuItem,
+            this.allToolStripMenuItem});
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.copyToolStripMenuItem.Text = "Copy";
+            // 
+            // nameToolStripMenuItem
+            // 
+            this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nameToolStripMenuItem.Text = "Name";
+            this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
+            // 
+            // allToolStripMenuItem
+            // 
+            this.allToolStripMenuItem.Name = "allToolStripMenuItem";
+            this.allToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.allToolStripMenuItem.Text = "All";
+            this.allToolStripMenuItem.Click += new System.EventHandler(this.allToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.editToolStripMenuItem,
+            this.copyToolStripMenuItem1,
+            this.pasteToolStripMenuItem1});
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(211, 128);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(132, 24);
+            this.toolStripMenuItem2.Text = "Remove";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nameToolStripMenuItem1,
+            this.allToolStripMenuItem1});
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem1.Text = "Copy";
+            // 
+            // nameToolStripMenuItem1
+            // 
+            this.nameToolStripMenuItem1.Name = "nameToolStripMenuItem1";
+            this.nameToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.nameToolStripMenuItem1.Text = "Name";
+            this.nameToolStripMenuItem1.Click += new System.EventHandler(this.nameToolStripMenuItem1_Click);
+            // 
+            // allToolStripMenuItem1
+            // 
+            this.allToolStripMenuItem1.Name = "allToolStripMenuItem1";
+            this.allToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.allToolStripMenuItem1.Text = "All";
+            this.allToolStripMenuItem1.Click += new System.EventHandler(this.allToolStripMenuItem1_Click);
+            // 
+            // pasteToolStripMenuItem1
+            // 
+            this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem1.Text = "Paste";
+            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
             // 
             // App
             // 
@@ -292,8 +344,6 @@
             this.Controls.Add(this.Profile);
             this.Controls.Add(this.ExpClearButton);
             this.Controls.Add(this.IncClearButton);
-            this.Controls.Add(this.ExpRemButton);
-            this.Controls.Add(this.IncRemButton);
             this.Controls.Add(this.ShowResult);
             this.Controls.Add(this.ShowExpenses);
             this.Controls.Add(this.ShowIncomes);
@@ -324,8 +374,6 @@
         private System.Windows.Forms.Label ShowIncomes;
         private System.Windows.Forms.Label ShowExpenses;
         private System.Windows.Forms.Label ShowResult;
-        private System.Windows.Forms.Button IncRemButton;
-        private System.Windows.Forms.Button ExpRemButton;
         private System.Windows.Forms.Button IncClearButton;
         private System.Windows.Forms.Button ExpClearButton;
         private System.Windows.Forms.Label Profile;
@@ -340,5 +388,13 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem allToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem1;
     }
 }

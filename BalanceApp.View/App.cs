@@ -14,6 +14,7 @@ namespace BalanceApp.View
         /// </summary>
         private readonly User currentUser;
 
+
         private Balance oldBalance;
         /// <summary>
         /// Own user profile
@@ -24,8 +25,6 @@ namespace BalanceApp.View
             InitializeComponent();
             ExpAddButton.Click += (s, e) => { AddButton(ExpAddButton); };
             IncAddButton.Click += (s, e) => { AddButton(IncAddButton); };
-            IncRemButton.Click += (s, e) => { RemoveButton(IncomesView, currentUser.Incomes, ShowIncomes,"Incomes"); };
-            ExpRemButton.Click += (s, e) => { RemoveButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
             IncClearButton.Click += (s, e) => { ClearButton(IncomesView, currentUser.Incomes, ShowIncomes, "Incomes"); };
             ExpClearButton.Click += (s, e) => { ClearButton(ExpensesView, currentUser.Expenses, ShowExpenses, "Expenses"); };
             currentUser = user;
@@ -121,25 +120,7 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RemoveButton(ListView listView,
-                                  List<Balance> balances,
-                                  Label label,
-                                  string balance)
-        {
-            try
-            {
-                var item = listView.SelectedItems[0];
-                balances.RemoveAt(item.Index);
-                listView.Items.Remove(item);
-            }
-            catch 
-            {
-                return;
-            }
-            
-            RefreshData(GetBalanceList(balances), listView);
-            ChangeText(label, balances, balance);
-        }
+       
 
         private void AddWindow(List<Balance> balances,string type)
         {
@@ -207,9 +188,9 @@ namespace BalanceApp.View
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Balance currentIncome = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
             try
             {
+                Balance currentIncome = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
                 IncomesView.Items.Remove(IncomesView.SelectedItems[0]);
                 currentUser.Incomes.Remove(currentIncome);
             }
@@ -222,9 +203,9 @@ namespace BalanceApp.View
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Balance currentExpense = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
             try
             {
+                Balance currentExpense = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
                 ExpensesView.Items.Remove(ExpensesView.SelectedItems[0]);
                 currentUser.Expenses.Remove(currentExpense);
             }
@@ -261,12 +242,20 @@ namespace BalanceApp.View
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            oldBalance = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
-            if (ExpensesView.SelectedItems[0] != null)
+            try
             {
-                ExpensesView.LabelEdit = true;
-                ExpensesView.SelectedItems[0].BeginEdit();
+                oldBalance = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
+                if (ExpensesView.SelectedItems[0] != null)
+                {
+                    ExpensesView.LabelEdit = true;
+                    ExpensesView.SelectedItems[0].BeginEdit();
+                }
             }
+            catch
+            {
+                return;
+            }
+            
         }
 
         private void ExpensesView_AfterLabelEdit(object sender, LabelEditEventArgs e)
@@ -280,6 +269,94 @@ namespace BalanceApp.View
             ExpensesView.LabelEdit = false;
             oldBalance.Name = e.Label;
             RefreshData(currentUser.Expenses, ExpensesView);
+        }
+
+        private void nameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(IncomesView.SelectedItems[0].Text);
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void allToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(IncomesView.SelectedItems[0].Tag.ToString());
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var text = Clipboard.GetText();
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                MessageBox.Show("Please enter a valid value.");
+                return;
+            }
+            try
+            {
+                oldBalance = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
+                oldBalance.Name = text;
+                RefreshData(currentUser.Incomes, IncomesView);
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void nameToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(ExpensesView.SelectedItems[0].Text);
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void allToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(ExpensesView.SelectedItems[0].Tag.ToString());
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var text = Clipboard.GetText();
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                MessageBox.Show("Please enter a valid value.");
+                return;
+            }
+            try
+            {
+                oldBalance = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
+                oldBalance.Name = text;
+                RefreshData(currentUser.Expenses, ExpensesView);
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }
