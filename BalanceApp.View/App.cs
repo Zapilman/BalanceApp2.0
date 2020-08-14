@@ -358,5 +358,50 @@ namespace BalanceApp.View
                 return;
             }
         }
+
+        int quantityInc = 0;
+        int quantityExp = 0;
+        private void IncomesView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            quantityInc++;
+            if(quantityInc % 2 == 0)
+            {
+                if (e.Column == 1)
+                {
+                    IncomesView.ListViewItemSorter = new ListViewColumnComparer(e.Column);
+
+                }
+            }
+            else
+            {
+                if (e.Column == 1)
+                {
+                    IncomesView.ListViewItemSorter = new ReverseColumnComparer(e.Column);
+
+                }
+            }
+            
+        }
+
+        private void ExpensesView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            quantityExp++;
+            if (quantityExp % 2 == 0)
+            {
+                if (e.Column == 1)
+                {
+                    ExpensesView.ListViewItemSorter = new ListViewColumnComparer(e.Column);
+
+                }
+            }
+            else
+            {
+                if (e.Column == 1)
+                {
+                    ExpensesView.ListViewItemSorter = new ReverseColumnComparer(e.Column);
+
+                }
+            }
+        }
     }
 }

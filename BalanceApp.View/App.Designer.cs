@@ -86,6 +86,7 @@
             this.IncomesView.UseCompatibleStateImageBehavior = false;
             this.IncomesView.View = System.Windows.Forms.View.Details;
             this.IncomesView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.IncomesView_AfterLabelEdit);
+            this.IncomesView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.IncomesView_ColumnClick);
             // 
             // columnHeader1
             // 
@@ -126,6 +127,7 @@
             this.ExpensesView.UseCompatibleStateImageBehavior = false;
             this.ExpensesView.View = System.Windows.Forms.View.Details;
             this.ExpensesView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.ExpensesView_AfterLabelEdit);
+            this.ExpensesView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.ExpensesView_ColumnClick);
             // 
             // Stuff
             // 
@@ -263,14 +265,14 @@
             // nameToolStripMenuItem
             // 
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(132, 26);
             this.nameToolStripMenuItem.Text = "Name";
             this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
             // 
             // allToolStripMenuItem
             // 
             this.allToolStripMenuItem.Name = "allToolStripMenuItem";
-            this.allToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.allToolStripMenuItem.Size = new System.Drawing.Size(132, 26);
             this.allToolStripMenuItem.Text = "All";
             this.allToolStripMenuItem.Click += new System.EventHandler(this.allToolStripMenuItem_Click);
             // 
@@ -290,7 +292,7 @@
             this.copyToolStripMenuItem1,
             this.pasteToolStripMenuItem1});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(211, 128);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(133, 100);
             // 
             // toolStripMenuItem2
             // 
@@ -312,27 +314,27 @@
             this.nameToolStripMenuItem1,
             this.allToolStripMenuItem1});
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(132, 24);
             this.copyToolStripMenuItem1.Text = "Copy";
             // 
             // nameToolStripMenuItem1
             // 
             this.nameToolStripMenuItem1.Name = "nameToolStripMenuItem1";
-            this.nameToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.nameToolStripMenuItem1.Size = new System.Drawing.Size(132, 26);
             this.nameToolStripMenuItem1.Text = "Name";
             this.nameToolStripMenuItem1.Click += new System.EventHandler(this.nameToolStripMenuItem1_Click);
             // 
             // allToolStripMenuItem1
             // 
             this.allToolStripMenuItem1.Name = "allToolStripMenuItem1";
-            this.allToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.allToolStripMenuItem1.Size = new System.Drawing.Size(132, 26);
             this.allToolStripMenuItem1.Text = "All";
             this.allToolStripMenuItem1.Click += new System.EventHandler(this.allToolStripMenuItem1_Click);
             // 
             // pasteToolStripMenuItem1
             // 
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(210, 24);
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(132, 24);
             this.pasteToolStripMenuItem1.Text = "Paste";
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
             // 
