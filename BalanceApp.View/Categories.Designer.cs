@@ -30,6 +30,7 @@
         {
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.AddCategoryLabel = new System.Windows.Forms.Label();
+            this.removeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // treeView1
@@ -49,11 +50,22 @@
             this.AddCategoryLabel.Text = "Add Category";
             this.AddCategoryLabel.Click += new System.EventHandler(this.AddCategoryLabel_Click);
             // 
+            // removeLabel
+            // 
+            this.removeLabel.AutoSize = true;
+            this.removeLabel.Location = new System.Drawing.Point(530, 119);
+            this.removeLabel.Name = "removeLabel";
+            this.removeLabel.Size = new System.Drawing.Size(121, 17);
+            this.removeLabel.TabIndex = 2;
+            this.removeLabel.Text = "Remove Category";
+            this.removeLabel.Click += new System.EventHandler(this.removeLabel_Click);
+            // 
             // Categories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.removeLabel);
             this.Controls.Add(this.AddCategoryLabel);
             this.Controls.Add(this.treeView1);
             this.Name = "Categories";
@@ -67,5 +79,6 @@
 
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label AddCategoryLabel;
+        private System.Windows.Forms.Label removeLabel;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BalanceApp.BL.Controller;
 using BalanceApp.BL.Model;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BalanceApp.View
@@ -7,6 +8,8 @@ namespace BalanceApp.View
     public partial class Categories : Form
     {
         private readonly User currentUser;
+        CategoryController categoryController;
+
         public Categories(User user)
         {
             currentUser = user;
@@ -14,12 +17,13 @@ namespace BalanceApp.View
            
             InitializeComponent();
             FillCategoryNodes();
+            Text = "Categories";
         }
 
         private void FillCategoryNodes()
         {
+            categoryController = new CategoryController(currentUser);
             treeView1.Nodes.Clear();
-            var categoryController = new CategoryController(currentUser);
             foreach (var category in categoryController.categories)
             {
                 TreeNode categoryNode = new TreeNode(Text = category.Name);
@@ -27,12 +31,12 @@ namespace BalanceApp.View
                 {
                     continue;
                 }
-                FillTreeNode(categoryNode, categoryController);
+                FillTreeNode(categoryNode);
                 treeView1.Nodes.Add(categoryNode);
             }
         }
 
-        private void FillTreeNode(TreeNode treeNode, CategoryController categoryController)
+        private void FillTreeNode(TreeNode treeNode)
         {
             foreach(var category in categoryController.categories)
             {
@@ -50,6 +54,32 @@ namespace BalanceApp.View
             {
                 addCategory.ShowDialog();
                 FillCategoryNodes();
+            }
+        }
+
+        private void removeLabel_Click(object sender, System.EventArgs e)
+        {
+            
+            try
+            {
+                var generalCategoies = new GeneralCategoryList();
+                var currentCategory = generalCategoies.GetGeneralList().SingleOrDefault(c => c.Name == treeView1.SelectedNode.Text);
+                if(currentCategory != null)
+                {
+                    return;
+                }
+                else
+                {
+                    CategoryController removeCategoryController = new CategoryController(currentUser, treeView1.SelectedNode.Text);
+                    treeView1.Nodes.Remove(treeView1.SelectedNode);
+                }
+
+                
+
+            }
+            catch
+            {
+                return;
             }
         }
     }

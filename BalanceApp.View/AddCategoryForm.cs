@@ -99,7 +99,7 @@ namespace BalanceApp.View
             {
                 throw new ArgumentNullException("category can not bea null", nameof(CategoryNameBox.Text));
             }
-            if(ParentList.Text == "Parent Category")
+            if(ParentList.Text == "Parent Category" || ParentList.Text == "")
             {
                 var newCategory = new CategoryController(currentUser, CategoryNameBox.Text, type, null);
             }

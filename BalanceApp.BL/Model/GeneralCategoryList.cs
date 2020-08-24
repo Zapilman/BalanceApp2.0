@@ -10,7 +10,7 @@ namespace BalanceApp.BL.Model
         private readonly Category[] generalCategories = new[] {new Category(null,"Salary", "Incomes", null),
                                                                                  new Category(null,"Gifts","Expenses",null),
                                                                                new Category(null,"Codasd", "Incomes", "Salary"),
-                                                                              new Category(null,"Suka","Expenses","Gifts")};
+                                                                              new Category(null,"sdwww","Expenses","Gifts")};
 
 
         public Category[] GetGeneralList()
