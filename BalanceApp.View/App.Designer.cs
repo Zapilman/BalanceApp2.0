@@ -169,28 +169,30 @@
             // 
             // ShowIncomes
             // 
-            this.ShowIncomes.AutoSize = true;
-            this.ShowIncomes.Location = new System.Drawing.Point(125, 542);
+            this.ShowIncomes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowIncomes.ForeColor = System.Drawing.Color.ForestGreen;
+            this.ShowIncomes.Location = new System.Drawing.Point(53, 542);
             this.ShowIncomes.Name = "ShowIncomes";
-            this.ShowIncomes.Size = new System.Drawing.Size(68, 17);
+            this.ShowIncomes.Size = new System.Drawing.Size(499, 62);
             this.ShowIncomes.TabIndex = 7;
             this.ShowIncomes.Text = "Incomes: ";
             // 
             // ShowExpenses
             // 
-            this.ShowExpenses.AutoSize = true;
-            this.ShowExpenses.Location = new System.Drawing.Point(661, 542);
+            this.ShowExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowExpenses.ForeColor = System.Drawing.Color.Red;
+            this.ShowExpenses.Location = new System.Drawing.Point(621, 542);
             this.ShowExpenses.Name = "ShowExpenses";
-            this.ShowExpenses.Size = new System.Drawing.Size(77, 17);
+            this.ShowExpenses.Size = new System.Drawing.Size(468, 62);
             this.ShowExpenses.TabIndex = 8;
             this.ShowExpenses.Text = "Expenses: ";
             // 
             // ShowResult
             // 
-            this.ShowResult.AutoSize = true;
-            this.ShowResult.Location = new System.Drawing.Point(525, 641);
+            this.ShowResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ShowResult.Location = new System.Drawing.Point(462, 641);
             this.ShowResult.Name = "ShowResult";
-            this.ShowResult.Size = new System.Drawing.Size(56, 17);
+            this.ShowResult.Size = new System.Drawing.Size(539, 39);
             this.ShowResult.TabIndex = 9;
             this.ShowResult.Text = "Result: ";
             // 

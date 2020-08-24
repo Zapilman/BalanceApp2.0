@@ -57,7 +57,7 @@
             this.Controls.Add(this.AddCategoryLabel);
             this.Controls.Add(this.treeView1);
             this.Name = "Categories";
-            this.Text = "Categories";
+            this.Text = "Categoriess";
             this.ResumeLayout(false);
             this.PerformLayout();
 

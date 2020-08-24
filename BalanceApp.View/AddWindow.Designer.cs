@@ -41,6 +41,8 @@
             this.stuffBox.Name = "stuffBox";
             this.stuffBox.Size = new System.Drawing.Size(325, 38);
             this.stuffBox.TabIndex = 0;
+            this.stuffBox.Enter += new System.EventHandler(this.stuffBox_Enter);
+            this.stuffBox.Leave += new System.EventHandler(this.stuffBox_Leave);
             // 
             // button1
             // 
@@ -55,13 +57,19 @@
             // countBox
             // 
             this.countBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countBox.ForeColor = System.Drawing.Color.Gray;
             this.countBox.Location = new System.Drawing.Point(385, 30);
             this.countBox.Name = "countBox";
             this.countBox.Size = new System.Drawing.Size(261, 38);
             this.countBox.TabIndex = 2;
+            this.countBox.Enter += new System.EventHandler(this.countBox_Enter);
+            this.countBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.countBox_KeyDown);
+            this.countBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.countBox_KeyPress);
+            this.countBox.Leave += new System.EventHandler(this.countBox_Leave);
             // 
             // categoryBox
             // 
+            this.categoryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryBox.FormattingEnabled = true;
             this.categoryBox.Location = new System.Drawing.Point(266, 94);
             this.categoryBox.Name = "categoryBox";

@@ -15,6 +15,8 @@ namespace BalanceApp.View
     {
         private List<Balance> balances;
         private readonly List<Category> categories;
+        private readonly string nameOfBalance;
+        private readonly string countOfBalance;
         public AddWindow(List<Balance> balances, List<Category> categories )
         {
             this.balances = balances;
@@ -26,7 +28,8 @@ namespace BalanceApp.View
             {
                 categoryBox.Items.Add(category.Name);
             }
-
+            stuffBox.Text = nameOfBalance = "Name of " + categories[0].Type.Substring(0, categories[0].Type.Length - 1);
+            countBox.Text = countOfBalance = "Count of " + categories[0].Type.Substring(0, categories[0].Type.Length - 1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,5 +56,80 @@ namespace BalanceApp.View
         }
 
         
+
+        
+
+        private void stuffBox_Leave(object sender, EventArgs e)
+        {
+            if (stuffBox.Text == "")
+            {
+                stuffBox.Text = nameOfBalance;
+                stuffBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private void stuffBox_Enter(object sender, EventArgs e)
+        {
+            if (stuffBox.Text == nameOfBalance)
+            {
+                stuffBox.Text = "";
+                stuffBox.ForeColor = Color.Black;
+            }
+        }
+
+        
+
+        private void countBox_Leave(object sender, EventArgs e)
+        {
+            if (countBox.Text == "")
+            {
+                countBox.Text = countOfBalance;
+                countBox.ForeColor = Color.Gray;
+            }
+        }
+
+        private bool nonNumberEntered = false;
+
+        private void countBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void countBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void countBox_Enter(object sender, EventArgs e)
+        {
+            if (countBox.Text == countOfBalance)
+            {
+                countBox.Text = "";
+                countBox.ForeColor = Color.Black;
+            }
+        }
     }
 }

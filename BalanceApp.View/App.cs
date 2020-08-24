@@ -2,6 +2,7 @@
 using BalanceApp.BL.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace BalanceApp.View
         /// </summary>
         private readonly User currentUser;
 
+        private double result = 0.0;
 
         private Balance oldBalance;
         /// <summary>
@@ -38,14 +40,18 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
         private void App_Load(object sender, EventArgs e)
         {
             RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
             RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
             ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
-            ShowIncomes.Text = "Incomes: " + Convert.ToString(GetCountOf(currentUser.Incomes));
-            ShowResult.Text = "Result: " + Convert.ToString(GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses));
+            ChangeText(ShowIncomes, currentUser.Incomes, "Incomes");
+            
         }
+
+        
+
         /// <summary>
         /// Getting list of incomes or expenses.
         /// </summary>
@@ -103,16 +109,16 @@ namespace BalanceApp.View
 
                 AddWindow(currentUser.Expenses,"Expenses");
                 RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
-                ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
+                ChangeText(ShowExpenses, currentUser.Expenses, "Expenses");
             }
             else
             {
                 AddWindow(currentUser.Incomes,"Incomes");
                 RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
-                ShowIncomes.Text = "Incomes: " + Convert.ToString(GetCountOf(currentUser.Incomes));
+                ChangeText(ShowIncomes, currentUser.Incomes, "Incomes");
             }
 
-            ShowResult.Text = "Result: " + Convert.ToString(GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses));
+            
         }
         
         /// <summary>
@@ -154,7 +160,21 @@ namespace BalanceApp.View
         private void ChangeText(Label label,List<Balance> balances, string balance)
         {
             label.Text = $"{balance}: " + Convert.ToString(GetCountOf(balances));
-            ShowResult.Text = "Result: " + Convert.ToString(GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses));
+            result = GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses);
+            ShowResult.Text = "Result: " + Convert.ToString(result);
+            if (result < 0.0)
+            {
+                ShowResult.ForeColor = Color.Red;
+            }
+            else if (result > 0.0)
+            {
+                ShowResult.ForeColor = Color.Green;
+            }
+            else
+            {
+                ShowResult.ForeColor = Color.Black;
+
+            }
         }
 
         
