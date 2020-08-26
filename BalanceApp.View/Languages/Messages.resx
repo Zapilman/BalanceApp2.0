@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeNameLabel" xml:space="preserve">
+    <value>Change Username</value>
+  </data>
+  <data name="ChangePassLabel" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ExpensesLabel" xml:space="preserve">
+    <value>Expenses: </value>
+  </data>
   <data name="Greetings" xml:space="preserve">
     <value>Hello, User !</value>
+  </data>
+  <data name="IncomesLabel" xml:space="preserve">
+    <value>Incomes: </value>
+  </data>
+  <data name="TotalLabel" xml:space="preserve">
+    <value>Total: </value>
   </data>
 </root>

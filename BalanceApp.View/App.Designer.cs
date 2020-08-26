@@ -194,7 +194,7 @@
             this.ShowResult.Name = "ShowResult";
             this.ShowResult.Size = new System.Drawing.Size(539, 39);
             this.ShowResult.TabIndex = 9;
-            this.ShowResult.Text = "Result: ";
+            this.ShowResult.Text = "Total: ";
             // 
             // IncClearButton
             // 

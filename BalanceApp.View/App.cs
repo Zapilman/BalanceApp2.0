@@ -15,9 +15,9 @@ namespace BalanceApp.View
         /// </summary>
         private readonly User currentUser;
 
-        private double result = 0.0;
+        private double total = 0.0;
 
-        private Balance oldBalance;
+        private Amount oldBalance;
         /// <summary>
         /// Own user profile
         /// </summary>
@@ -32,6 +32,9 @@ namespace BalanceApp.View
             currentUser = user;
             IncomesView.ContextMenuStrip = contextMenuStrip1;
             ExpensesView.ContextMenuStrip = contextMenuStrip2;
+            ShowIncomes.Text = Languages.Messages.IncomesLabel;
+            ShowExpenses.Text = Languages.Messages.ExpensesLabel;
+            ShowResult.Text = Languages.Messages.TotalLabel;
             
         }
 
@@ -45,7 +48,6 @@ namespace BalanceApp.View
         {
             RefreshData(GetBalanceList(currentUser.Expenses), ExpensesView);
             RefreshData(GetBalanceList(currentUser.Incomes), IncomesView);
-            ShowExpenses.Text = "Expenses: " + Convert.ToString(GetCountOf(currentUser.Expenses));
             ChangeText(ShowIncomes, currentUser.Incomes, "Incomes");
             
         }
@@ -57,7 +59,7 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="balance"> balance list. </param>
         /// <returns></returns>
-        private List<Balance> GetBalanceList(List<Balance> balance)
+        private List<Amount> GetBalanceList(List<Amount> balance)
         {
             if (balance != null)
             {
@@ -65,7 +67,7 @@ namespace BalanceApp.View
             }
             else
             {
-                return new List<Balance>();
+                return new List<Amount>();
             }
         }
 
@@ -78,7 +80,7 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="balance"></param>
         /// <param name="listView"></param>
-        private void RefreshData(List<Balance> balance,ListView listView)
+        private void RefreshData(List<Amount> balance,ListView listView)
         {
             listView.Items.Clear();
             
@@ -128,7 +130,7 @@ namespace BalanceApp.View
         /// <param name="e"></param>
        
 
-        private void AddWindow(List<Balance> balances,string type)
+        private void AddWindow(List<Amount> balances,string type)
         {
             var categoryController = new CategoryController(currentUser);
             var newcontroller = new List<Category>();
@@ -147,7 +149,7 @@ namespace BalanceApp.View
 
 
         private void ClearButton(ListView listView,
-                                List<Balance> balances,
+                                List<Amount> balances,
                                 Label label,
                                 string balance )
         {
@@ -157,16 +159,16 @@ namespace BalanceApp.View
             ChangeText(label, balances, balance);
         }
 
-        private void ChangeText(Label label,List<Balance> balances, string balance)
+        private void ChangeText(Label label,List<Amount> balances, string balance)
         {
             label.Text = $"{balance}: " + Convert.ToString(GetCountOf(balances));
-            result = GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses);
-            ShowResult.Text = "Result: " + Convert.ToString(result);
-            if (result < 0.0)
+            total = GetCountOf(currentUser.Incomes) - GetCountOf(currentUser.Expenses);
+            ShowResult.Text = Languages.Messages.TotalLabel + Convert.ToString(total);
+            if (total < 0.0)
             {
                 ShowResult.ForeColor = Color.Red;
             }
-            else if (result > 0.0)
+            else if (total > 0.0)
             {
                 ShowResult.ForeColor = Color.Green;
             }
@@ -184,7 +186,7 @@ namespace BalanceApp.View
         /// </summary>
         /// <param name="balance"></param>
         /// <returns></returns>
-        private double GetCountOf(List<Balance> balance)
+        private double GetCountOf(List<Amount> balance)
         {
             double sumOf = 0.0;
             foreach (var item in balance)
@@ -210,7 +212,7 @@ namespace BalanceApp.View
         {
             try
             {
-                Balance currentIncome = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
+                Amount currentIncome = currentUser.Incomes.SingleOrDefault(b => b.Name == IncomesView.SelectedItems[0].Text);
                 IncomesView.Items.Remove(IncomesView.SelectedItems[0]);
                 currentUser.Incomes.Remove(currentIncome);
             }
@@ -225,7 +227,7 @@ namespace BalanceApp.View
         {
             try
             {
-                Balance currentExpense = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
+                Amount currentExpense = currentUser.Expenses.SingleOrDefault(b => b.Name == ExpensesView.SelectedItems[0].Text);
                 ExpensesView.Items.Remove(ExpensesView.SelectedItems[0]);
                 currentUser.Expenses.Remove(currentExpense);
             }

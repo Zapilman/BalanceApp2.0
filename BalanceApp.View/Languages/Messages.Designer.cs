@@ -61,11 +61,56 @@ namespace BalanceApp.View.Languages {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Change Username.
+        /// </summary>
+        internal static string ChangeNameLabel {
+            get {
+                return ResourceManager.GetString("ChangeNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Change Password.
+        /// </summary>
+        internal static string ChangePassLabel {
+            get {
+                return ResourceManager.GetString("ChangePassLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Expenses: .
+        /// </summary>
+        internal static string ExpensesLabel {
+            get {
+                return ResourceManager.GetString("ExpensesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Hello, User !.
         /// </summary>
         internal static string Greetings {
             get {
                 return ResourceManager.GetString("Greetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Incomes: .
+        /// </summary>
+        internal static string IncomesLabel {
+            get {
+                return ResourceManager.GetString("IncomesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Total: .
+        /// </summary>
+        internal static string TotalLabel {
+            get {
+                return ResourceManager.GetString("TotalLabel", resourceCulture);
             }
         }
     }

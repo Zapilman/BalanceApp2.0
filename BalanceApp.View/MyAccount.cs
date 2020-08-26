@@ -13,6 +13,8 @@ namespace BalanceApp.View
             currentUser = user;
             InitializeComponent();
 
+            changeNameLabel.Text = Languages.Messages.ChangeNameLabel;
+            ChangePassLabel.Text = Languages.Messages.ChangePassLabel;
            
             ChangeNameButton.Click += (s, e) =>
             {

@@ -10,14 +10,14 @@ namespace BalanceApp.BL.Model.Tests
     public class BalanceTests
     {
         [TestMethod()]
-        public void BalanceTest()
+        public void AmountTest()
         {
             //Arrange
             double num = 100.3;
             var category = new Category(null,"Salary", "Incomes", null);
 
             //Act
-            var balance = new Balance("choto", num,DateTime.Today,category);
+            var balance = new Amount("choto", num,DateTime.Today,category);
 
             //Assert
             Assert.AreEqual(num, balance.Cost);

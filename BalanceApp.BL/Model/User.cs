@@ -23,11 +23,11 @@ namespace BalanceApp.BL.Model
         /// <summary>
         /// List of expenses.
         /// </summary>
-        public List<Balance> Expenses { get; set; }
+        public List<Amount> Expenses { get; set; }
         /// <summary>
         /// List of incomes.
         /// </summary>
-        public List<Balance> Incomes { get; set; }
+        public List<Amount> Incomes { get; set; }
         /// <summary>
         /// Password.
         /// </summary>
@@ -78,8 +78,8 @@ namespace BalanceApp.BL.Model
             Birthday = birthday;
             Password = password;
             Login = login;
-            Expenses = new List<Balance>();
-            Incomes = new List<Balance>();
+            Expenses = new List<Amount>();
+            Incomes = new List<Amount>();
         }
         /// <summary>
         /// to Create new User with one name.

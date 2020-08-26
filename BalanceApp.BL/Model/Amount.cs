@@ -6,7 +6,7 @@ namespace BalanceApp.BL.Model
     /// Balance.
     /// </summary>
     [Serializable]
-    public class Balance
+    public class Amount
     {
         /// <summary>
         /// DateTime of the stuff registration.
@@ -30,7 +30,7 @@ namespace BalanceApp.BL.Model
         /// <param name="name"> Name of something. </param>
         /// <param name="cost"> Cost of something. </param>
 
-        public Balance(string name, double cost, DateTime dateTime, Category category)
+        public Amount(string name, double cost, DateTime dateTime, Category category)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
